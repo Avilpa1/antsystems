@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'antsystems-frontend';
+  title = 'Antsystems';
   currentYear = new Date().getFullYear();
 }
