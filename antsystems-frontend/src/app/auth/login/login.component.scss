@@ -1,0 +1,34 @@
+.login-btn {
+    background-color: #80C4E1;
+}
+
+.login-btn:hover {
+    background-color: #74b3cc;
+}
+
+.srm-text-blue {
+    color: #74b3cc;
+}
+
+.bg-img {
+    background: url(../../../assets/login-star-bg-large.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.login-wrapper {
+    width: 54rem;
+    height: 31rem;
+    display: flex;
+    border-radius: 15px;
+}
+
+.login-form {
+    background-color: #F9F9FB;
+}
+
+hr {
+    border-color: #EBEBEB;
+}

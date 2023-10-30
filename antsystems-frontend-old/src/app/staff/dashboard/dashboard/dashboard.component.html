@@ -1,0 +1,56 @@
+<ng-container>
+    <div class="page-title">
+        Status of Purchase Order Department
+    </div>
+
+    <div class="flex gap-4 mt-6 mr-2">
+        <div class="w-1/4 bg-white shadow-md p-2 pb-4 flex justify-center flex-col">
+            <div class="title font-semibold text-center pb-4">Total of PO's Processed</div>
+            <app-doughnut-chart title="Total of PO's Processed"></app-doughnut-chart>
+        </div>
+        <div class="w-1/4 bg-white shadow-md p-2 pb-4 flex justify-center flex-col">
+            <div class="title font-semibold text-center pb-4">Amount Spent by Months</div>
+            <app-doughnut-chart title="Amount Spent by Months"></app-doughnut-chart>
+        </div>
+        <div class="w-1/4 bg-white shadow-md p-2 pb-4 flex justify-center flex-col">
+            <div class="title font-semibold text-center pb-4">Estimated Time Arrive Containers</div>
+
+            <app-doughnut-chart title="Estimated Time Arrive Containers"></app-doughnut-chart>
+        </div>
+        <div class="w-1/4 bg-white shadow-md p-2 pb-4 flex justify-center flex-col">
+            <div class="title font-semibold text-center pb-4">Avg. by Categories</div>
+            <app-doughnut-chart title="Avg. by Categories"></app-doughnut-chart>
+        </div>
+    </div>    
+</ng-container>
+
+<ng-container>
+    <div class="page-title mt-10">
+        Purchase Order Status By Months
+    </div>
+
+    <div class="flex gap-4 mt-6 mr-2">
+        <ng-container *ngFor="let item of ['green', 'blue', 'red', 'yellow', 'white']">
+            <div class="w-1/5 bg-{{item}} h-32 shadow-md rounded-md">
+
+            </div>
+        </ng-container>    
+    </div>    
+</ng-container>
+
+<ng-container>
+    <div class="page-title mt-10">
+        Workflow Status
+    </div>
+
+    <div class="flex gap-4 mt-6 mr-2 flex-wrap flex-1">
+        <app-table-card class="w-49p" [tableData]="poProcessing"></app-table-card>
+        <app-table-card class="w-49p" [tableData]="poOnboarding"></app-table-card>
+        <app-table-card class="w-49p" [tableData]="poDutyFees"></app-table-card>
+        <app-table-card class="w-49p" [tableData]="poConfirmedToRelease"></app-table-card>
+        <app-table-card class="w-49p" [tableData]="poReceived"></app-table-card>
+        <app-table-card class="w-49p" [tableData]="poUnloading"></app-table-card>
+        <app-table-card class="w-49p" [tableData]="poEmpty"></app-table-card>
+        <app-table-card class="w-49p" [tableData]="poReceivedInSystem"></app-table-card>
+    </div>    
+</ng-container>
