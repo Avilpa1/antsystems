@@ -1,0 +1,34 @@
+.product-status-container {
+    border-radius: 5px;
+    border: 1px solid #000;
+    background: #F1F1F1;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-inline: 20px;
+    height: 14rem;
+
+
+    display: grid;
+    grid-gap: 19px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    align-content: center;
+    justify-items: center;
+
+}
+
+.product-container {
+    margin-top: 1.25rem;
+    margin-inline: 20px;
+    border-radius: 10px;
+    background: #FFF;
+
+    .header {
+        border-radius: 10px 10px 0 0;
+        height: 37px;
+        background: #75889D;
+    }
+
+    .content {
+        padding: 1.5rem 0.5rem;
+    }
+}

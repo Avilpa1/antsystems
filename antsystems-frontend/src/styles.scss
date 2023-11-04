@@ -6,10 +6,10 @@
   box-sizing: border-box;
 }
 
-// body {
-//     background-color: #E9E9E9;
-//     min-width: 1280px;
-// }
+body {
+    background-color: #E7E7E7;
+    // min-width: 1280px;
+}
 
 .text-grey {
     color: #717171
@@ -31,7 +31,28 @@
     text-shadow: none;
   }
 
+ .bg-blue-dark {
+  background-color: #000C29;
+ }
+
+ .bg-blue-med {
+  background-color: #24384E;
+ }
+
 //   :root {
 //     --modal-height: 15rem;
 //     --modal-width: 30rem;    
 // }
+
+.base {
+  color: #000000;
+}
+.success {
+  color: #00DD16;
+}
+.warning {
+  color: #EE8F00;
+}
+.emergency {
+  color: #FF000B;
+}

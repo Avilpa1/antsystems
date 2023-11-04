@@ -1,0 +1,46 @@
+.module-nav {
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+    align-items: center;
+}
+
+.nav-icon {
+    font-size: 32px;
+    color: #5E7C9F;
+    cursor: pointer;
+    user-select: none;
+}
+
+.nav-text {
+    color: #5E7C9F;
+    cursor: pointer;
+    user-select: none;
+    width: 0px;
+    opacity: 0;
+    transition: width 0.5s, opacity 0.5s 0.1s, transform 0.5s, padding-left 0.5s;
+    overflow: hidden;
+    transform: translate(60px);
+    white-space: nowrap;
+}
+
+:hover.menu-item .nav-text {
+    width: 100%;
+    transform: translate(0);
+    opacity: 1;
+    padding-left: 0.5rem;
+}
+
+.nav-icon-active {
+    color: #18BDC7;
+}
+
+.nav-text-active {
+    color: #18BDC7;
+    opacity: 1;
+    width: 100%;
+    padding-left: 0.5rem;
+    transform: translate(0);
+
+}
+
