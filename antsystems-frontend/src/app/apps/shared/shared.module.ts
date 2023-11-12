@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StatusCardComponent } from './components/status-card/status-card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -9,9 +10,13 @@ import { StatusCardComponent } from './components/status-card/status-card.compon
     StatusCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
+    FormsModule,
+    ReactiveFormsModule,
     StatusCardComponent
   ]
 })

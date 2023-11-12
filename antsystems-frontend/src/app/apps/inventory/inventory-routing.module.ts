@@ -10,6 +10,7 @@ import { InventoryAdjustmentComponent } from './inventory-adjustment/inventory-a
 import { RmaComponent } from './rma/rma.component';
 import { ProductReportsComponent } from './product-reports/product-reports.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ProductComponent } from './products/product/product.component';
 
 const routes: Routes = [
     {
@@ -23,7 +24,18 @@ const routes: Routes = [
             },
             {
                 path: 'products',
-                component: ProductsComponent
+                component: ProductsComponent,
+                children: [
+                    {
+                        path: '',
+                        redirectTo: 'product',
+                        pathMatch: 'full'
+                    },
+                    {
+                        path: 'product',
+                        component: ProductComponent
+                    }
+                ]
             },
             {
                 path: 'products-list',

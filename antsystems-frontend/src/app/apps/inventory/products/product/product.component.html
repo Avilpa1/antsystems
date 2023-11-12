@@ -1,0 +1,373 @@
+<div>
+    <div class="flex justify-between my-8">
+        <div><span>On Hand: </span><span class="text-green-500 font-bold">13,500 pcs / 5,000 cases</span></div>
+        <div><span>On Storage: </span><span class="text-blue-500 font-bold">59,000 pcs / 1,211 cases</span></div>
+        <div><span>On Order: </span><span class="text-yellow-500 font-bold">2,500 pcs / 50 cases</span></div>
+        <div><span>On MultiWarehouse: </span><span class="text-purple-500 font-bold">265,000 pcs / 35,000 cases</span>
+        </div>
+        <div class="flex items-center mb-4">
+            <input id="default-checkbox" type="checkbox" value=""
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="default-checkbox"
+                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Inactive</label>
+        </div>
+    </div>
+
+    <div class="flex">
+        <div class="w-4/5">
+            <div class="flex justify-between">
+                <div class="flex gap-4 w-5/6">
+                    <div class="w-1/4">
+                        <label for="first_name"
+                            class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Search SKU</label>
+                        <input type="text" id="first_name"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="SKU">
+                    </div>
+                    <div class="w-1/4">
+                        <label for="first_name"
+                            class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Description</label>
+                        <input type="text" id="first_name"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Description">
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-4xl w-1/6 flex justify-end items-center">
+                    lock
+                </span>
+            </div>
+            <form [formGroup]="productForm">
+                <!-- Unit Details -->
+                <div class="mt-6">
+                    <label for="first_name" class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Unit
+                        Details</label>
+                    <hr class="border-2 border-black border-solid">
+                    <div formGroupName="unitDetails" class="flex gap-4 form-section p-4">
+                        <div class="w-1/6">
+                            <label for="master_case"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Master Case</label>
+                            <input formControlName="masterCase" type="text" id="master_case"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Master Case">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="inner_box"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Inner Box</label>
+                            <input formControlName="innerBox" type="text" id="inner_box"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Inner Box">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="pack"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Pack</label>
+                            <input formControlName="pack" type="text" id="pack"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Pack">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="pieces"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Pieces</label>
+                            <input formControlName="pieces" type="text" id="pieces"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Pieces">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="case_by_pallet"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Case by
+                                Pallets</label>
+                            <input formControlName="caseByPallet" type="text" id="case_by_pallet"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Case by Pallet">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="row_and_case"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Row
+                                & Cases</label>
+                            <input formControlName="rowAndCase" type="text" id="row_and_case"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Row & Case">
+                        </div>
+                    </div>
+                </div>
+                <!-- Marketplace -->
+                <div class="mt-6">
+                    <label for="first_name"
+                        class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Marketplace</label>
+                    <hr class="border-2 border-black border-solid">
+                    <div formGroupName="marketplace" class="flex gap-4 form-section p-4">
+                        <div class="w-1/6">
+                            <label for="iSku"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">i-SKU</label>
+                            <input formControlName="iSku" type="text" id="iSku"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="i-SKU">
+                        </div>
+                    </div>
+                </div>
+                <!-- Price Details -->
+                <div class="mt-6">
+                    <label for="first_name" class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Price
+                        Details</label>
+                    <hr class="border-2 border-black border-solid">
+                    <div formGroupName="priceDetails" class="flex gap-4 form-section form-section-blue p-4 justify-between">
+                        <div class="w-1/6">
+                            <label for="retail_price"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Retail Price</label>
+                            <input formControlName="retailPrice" type="text" id="retail_price"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Retail Price">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="wholesale_price"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Wholesale Price</label>
+                            <input formControlName="wholesalePrice" type="text" id="wholesale_price"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Wholesale Price">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="distributor"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Distributor</label>
+                            <input formControlName="distributor" type="text" id="distributor"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Distributor">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="online_price"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Online Price</label>
+                            <input formControlName="onlinePrice" type="text" id="online_price"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Online Price">
+                        </div>
+                    </div>
+                </div>
+                <!-- Categories -->
+                <div class="mt-6">
+                    <label for="first_name"
+                        class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Categories</label>
+                    <hr class="border-2 border-black border-solid">
+                    <div formGroupName="categories" class="flex gap-4 form-section p-4 justify-between">
+                        <div class="w-1/6">
+                            <label for="category"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Category</label>
+                            <input formControlName="category" type="text" id="category"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Category">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="sub_category"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub Category</label>
+                            <input formControlName="subCategory" type="text" id="sub_category"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Sub Category">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="product_type"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Product Type</label>
+                            <input formControlName="productType" type="text" id="product_type"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="SKU">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="sub_product_type"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub Product Type</label>
+                            <input formControlName="subProductType" type="text" id="sub_product_type"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Sub Product Type">
+                        </div>
+                    </div>
+                </div>
+                <!-- Brand Name -->
+                <div class="mt-6">
+                    <label for="first_name" class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Brand
+                        Name</label>
+                    <hr class="border-2 border-black border-solid">
+                    <div formGroupName="brandName" class="flex gap-4 form-section p-4">
+                        <div class="w-1/6">
+                            <label for="brand_name"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Brand Name</label>
+                            <input formControlName="brandName" type="text" id="brand_name"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Brand Name">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="sub_brand"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub Brand</label>
+                            <input formControlName="subBrand" type="text" id="sub_brand"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Sub Brand">
+                        </div>
+                    </div>
+                </div>
+                <!-- Measuring Details -->
+                <div class="mt-6">
+                    <label for="first_name"
+                        class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Measuring
+                        Details</label>
+                    <hr class="border-2 border-black border-solid">
+                    <div formGroupName="measuringDetails" class="flex gap-4 form-section p-4">
+                        <div class="w-1/6">
+                            <label for="l_w_h"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Measuring L x W x H</label>
+                            <input formControlName="lengthWidthHeight" type="text" id="l_w_h"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Measuring L x W x H">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="volume"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Volume CBM / CBF</label>
+                            <input formControlName="volume" type="text" id="volume"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Volume CBM / CBF">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="meas_type"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Meas Type</label>
+                            <input formControlName="measType" type="text" id="meas_type"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Meas Type">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="weight"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Weight</label>
+                            <input formControlName="weight" type="text" id="weight"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Weight">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="weight_type"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Weight Type</label>
+                            <input type="text" id="weight_type"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Weight Type">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="total_pound_pallet"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Total Pound Pallet</label>
+                            <input formControlName="totalPoundPallet" type="text" id="total_pound_pallet"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Total Pound Pallet">
+                        </div>
+                    </div>
+                </div>
+                <!-- Barcode -->
+                <div class="mt-6">
+                    <label for="first_name"
+                        class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Barcode</label>
+                    <hr class="border-2 border-black border-solid">
+                    <div formGroupName="barcode" class="flex gap-4 form-section p-4 justify-between">
+                        <div class="w-1/6">
+                            <label for="case"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Case</label>
+                            <input formControlName="case" type="text" id="case"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Case">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="inner"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Inner</label>
+                            <input formControlName="inner" type="text" id="inner"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Inner">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="pack"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Pack</label>
+                            <input formControlName="pack" type="text" id="pack"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Pack">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="piece"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Piece</label>
+                            <input formControlName="piece" type="text" id="piece"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Piece">
+                        </div>
+                    </div>
+                </div>
+                <!-- Locations -->
+                <div class="mt-6">
+                    <label for="first_name"
+                        class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Locations</label>
+                    <hr class="border-2 border-black border-solid">
+                    <div formGroupName="locations" class="flex gap-4 form-section p-4">
+                        <div class="w-1/6">
+                            <label for="warehouse_location"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Warehouse Location</label>
+                            <input formControlName="warehouseLocation" type="text" id="warehouse_location"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Warehouse Location">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="bin_location"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Bin Location</label>
+                            <input formControlName="binLocation" type="text" id="bin_location"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Bin Location">
+                        </div>
+                    </div>
+                </div>
+                <!-- Expiration Details -->
+                <div class="mt-6">
+                    <label for="first_name"
+                        class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Expiration
+                        Details</label>
+                    <hr class="border-2 border-black border-solid">
+                    <div formGroupName="expirationDetails" class="flex gap-4 form-section p-4">
+                        <div class="w-1/6">
+                            <label for="manufacture_date"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Manufacture Date</label>
+                            <input formControlName="manufactureDate" type="text" id="manufacture_date"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Manufacture Date">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="expiration_date"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Expiration Date</label>
+                            <input formControlName="expirationDate" type="text" id="expiration_date"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Expiration Date">
+                        </div>
+                        <div class="w-1/6 flex justify-center items-end mb-2 text-xs font-semibold">
+                            <span>Exp in:&nbsp;</span><span class="">3 years / 7 Months</span>
+                        </div>
+                        <div class="w-1/6">
+                            <label for="lot"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Lot</label>
+                            <input type="text" id="lot"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Lot">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="made_in"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Made In</label>
+                            <input formControlName="madeIn" type="text" id="made_in"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Made In">
+                        </div>
+                        <div class="w-1/6">
+                            <label for="serial_number"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Serial #</label>
+                            <input formControlName="serialNumber" type="text" id="serial_number"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Serial #">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Save/Cancel -->
+            <div class="mt-6 flex gap-6 justify-center">
+                <button type="button"
+                    class="w-28 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Cancel</button>
+                <button type="button"
+                    class="w-28 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
+            </div>
+        </div>
+        <div class="w-1/5 h-full flex justify-center flex-col items-center pl-6">
+            <div class="text-xs mb-2"><span>Vendor Item: </span><span>NK-23300-SRT</span></div>
+            <div class="w-full border-solid border-black border-2 h-48 mt-20 rounded-md">
+            </div>
+        </div>
+    </div>
+</div>

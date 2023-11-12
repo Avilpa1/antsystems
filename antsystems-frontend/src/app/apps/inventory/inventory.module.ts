@@ -12,6 +12,7 @@ import { RmaComponent } from './rma/rma.component';
 import { ProductReportsComponent } from './product-reports/product-reports.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SharedModule } from '../shared/shared.module';
+import { ProductComponent } from './products/product/product.component';
 
 
 
@@ -26,7 +27,8 @@ import { SharedModule } from '../shared/shared.module';
     InventoryAdjustmentComponent,
     RmaComponent,
     ProductReportsComponent,
-    SettingsComponent
+    SettingsComponent,
+    ProductComponent
   ],
   imports: [
     CommonModule,

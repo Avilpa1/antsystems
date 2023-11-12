@@ -11,5 +11,15 @@
 
 <div class="product-container">
     <div class="header flex justify-center items-center text-white font-semibold">Item Details</div>
-    <div class="content"></div>
+    <div class="content">
+        <div class="flex">
+            <button [routerLink]="['product']" class="px-2 mx-2 nav-item" routerLinkActive="nav-item-active">General</button>
+            <button [routerLink]="['products-list']" class="px-2 mx-2 nav-item" routerLinkActive="nav-item-active">Vendor</button>
+            <button [routerLink]="['fullfilment']" class="px-2 mx-2 nav-item" routerLinkActive="nav-item-active">Purchase</button>
+            <button [routerLink]="['inventory-adjustment']" class="px-2 mx-2 nav-item" routerLinkActive="nav-item-active">Receiving</button>
+            <button [routerLink]="['asset-tracking']" class="px-2 mx-2 nav-item" routerLinkActive="nav-item-active">Asset Tracking</button>
+            <button [routerLink]="['transfer']" class="px-2 mx-2 nav-item" routerLinkActive="nav-item-active">S/W Order</button>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
 </div>
