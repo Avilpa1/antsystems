@@ -1,5 +1,5 @@
 <div>
-    <div class="flex justify-between my-8">
+    <div class="flex justify-between my-8 flex-wrap gap-y-4 gap-x-4">
         <div><span>On Hand: </span><span class="text-green-500 font-bold">13,500 pcs / 5,000 cases</span></div>
         <div><span>On Storage: </span><span class="text-blue-500 font-bold">59,000 pcs / 1,211 cases</span></div>
         <div><span>On Order: </span><span class="text-yellow-500 font-bold">2,500 pcs / 50 cases</span></div>
@@ -109,17 +109,20 @@
                     <label for="first_name" class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Price
                         Details</label>
                     <hr class="border-2 border-black border-solid">
-                    <div formGroupName="priceDetails" class="flex gap-4 form-section form-section-blue p-4 justify-between">
+                    <div formGroupName="priceDetails"
+                        class="flex gap-4 form-section form-section-blue p-4 justify-between">
                         <div class="w-1/6">
                             <label for="retail_price"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Retail Price</label>
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Retail
+                                Price</label>
                             <input formControlName="retailPrice" type="text" id="retail_price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Retail Price">
                         </div>
                         <div class="w-1/6">
                             <label for="wholesale_price"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Wholesale Price</label>
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Wholesale
+                                Price</label>
                             <input formControlName="wholesalePrice" type="text" id="wholesale_price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Wholesale Price">
@@ -133,7 +136,8 @@
                         </div>
                         <div class="w-1/6">
                             <label for="online_price"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Online Price</label>
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Online
+                                Price</label>
                             <input formControlName="onlinePrice" type="text" id="online_price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Online Price">
@@ -145,34 +149,59 @@
                     <label for="first_name"
                         class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Categories</label>
                     <hr class="border-2 border-black border-solid">
-                    <div formGroupName="categories" class="flex gap-4 form-section p-4 justify-between">
+                    <div formGroupName="categories" class="flex gap-4 form-section p-4 justify-between"
+                        *ngIf="(categoriesData | async) as data">
                         <div class="w-1/6">
                             <label for="category"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Category</label>
-                            <input formControlName="category" type="text" id="category"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Category">
+                            <select formControlName="category" id="category"
+                                (change)="resetChildren('categories.subCategory')"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <ng-container *ngFor="let item of data.categoryMain">
+                                    <option [ngValue]="item.id">{{ item.name }}</option>
+                                </ng-container>
+                            </select>
                         </div>
                         <div class="w-1/6">
                             <label for="sub_category"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub Category</label>
-                            <input formControlName="subCategory" type="text" id="sub_category"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Sub Category">
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub
+                                Category</label>
+                            <select formControlName="subCategory" id="category"
+                                [enableDisable]="!productForm.get('categories.category')?.value"
+                                (change)="resetChildren('categories.productType')"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <ng-container
+                                    *ngFor="let item of data.subCategory | filterByParentId: productForm.get('categories.category')?.value">
+                                    <option [ngValue]="item.id">{{ item.name }}</option>
+                                </ng-container>
+                            </select>
                         </div>
                         <div class="w-1/6">
                             <label for="product_type"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Product Type</label>
-                            <input formControlName="productType" type="text" id="product_type"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Product Type">
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Product
+                                Type</label>
+                            <select formControlName="productType" id="category"
+                                [enableDisable]="!productForm.get('categories.subCategory')?.value"
+                                (change)="resetChildren('categories.subProductType')"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <ng-container
+                                    *ngFor="let item of data.productType | filterByParentId: productForm.get('categories.subCategory')?.value">
+                                    <option [ngValue]="item.id">{{ item.name }}</option>
+                                </ng-container>
+                            </select>
                         </div>
                         <div class="w-1/6">
                             <label for="sub_product_type"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub Product Type</label>
-                            <input formControlName="subProductType" type="text" id="sub_product_type"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Sub Product Type">
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub Product
+                                Type</label>
+                            <select formControlName="subProductType" id="category"
+                                [enableDisable]="!productForm.get('categories.productType')?.value"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <ng-container
+                                    *ngFor="let item of data.subProductType | filterByParentId: productForm.get('categories.productType')?.value">
+                                    <option [ngValue]="item.id">{{ item.name }}</option>
+                                </ng-container>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -207,14 +236,16 @@
                     <div formGroupName="measuringDetails" class="flex gap-4 form-section p-4">
                         <div class="w-1/6">
                             <label for="l_w_h"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Measuring L x W x H</label>
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Measuring L x W x
+                                H</label>
                             <input formControlName="lengthWidthHeight" type="text" id="l_w_h"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Measuring L x W x H">
                         </div>
                         <div class="w-1/6">
                             <label for="volume"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Volume CBM / CBF</label>
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Volume CBM /
+                                CBF</label>
                             <input formControlName="volume" type="text" id="volume"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Volume CBM / CBF">
@@ -236,13 +267,14 @@
                         <div class="w-1/6">
                             <label for="weight_type"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Weight Type</label>
-                            <input type="text" id="weight_type"
+                            <input formControlName="weightType" type="text" id="weight_type"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Weight Type">
                         </div>
                         <div class="w-1/6">
                             <label for="total_pound_pallet"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Total Pound Pallet</label>
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Total Pound
+                                Pallet</label>
                             <input formControlName="totalPoundPallet" type="text" id="total_pound_pallet"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Total Pound Pallet">
@@ -293,14 +325,16 @@
                     <div formGroupName="locations" class="flex gap-4 form-section p-4">
                         <div class="w-1/6">
                             <label for="warehouse_location"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Warehouse Location</label>
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Warehouse
+                                Location</label>
                             <input formControlName="warehouseLocation" type="text" id="warehouse_location"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Warehouse Location">
                         </div>
                         <div class="w-1/6">
                             <label for="bin_location"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Bin Location</label>
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Bin
+                                Location</label>
                             <input formControlName="binLocation" type="text" id="bin_location"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Bin Location">
@@ -316,14 +350,16 @@
                     <div formGroupName="expirationDetails" class="flex gap-4 form-section p-4">
                         <div class="w-1/6">
                             <label for="manufacture_date"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Manufacture Date</label>
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Manufacture
+                                Date</label>
                             <input formControlName="manufactureDate" type="text" id="manufacture_date"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Manufacture Date">
                         </div>
                         <div class="w-1/6">
                             <label for="expiration_date"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Expiration Date</label>
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Expiration
+                                Date</label>
                             <input formControlName="expirationDate" type="text" id="expiration_date"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Expiration Date">
@@ -334,7 +370,7 @@
                         <div class="w-1/6">
                             <label for="lot"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Lot</label>
-                            <input type="text" id="lot"
+                            <input formControlName="lot" type="text" id="lot"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Lot">
                         </div>
@@ -360,8 +396,10 @@
             <div class="mt-6 flex gap-6 justify-center">
                 <button type="button"
                     class="w-28 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Cancel</button>
-                <button type="button"
+                <button type="button" (click)="onSave()" [disabled]="!productForm.valid"
+                    [ngClass]="{'btn-disabled': !productForm.valid}"
                     class="w-28 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
+                <button (click)="onSave()">test</button>
             </div>
         </div>
         <div class="w-1/5 h-full flex justify-center flex-col items-center pl-6">

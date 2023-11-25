@@ -13,6 +13,7 @@ import { ProductReportsComponent } from './product-reports/product-reports.compo
 import { SettingsComponent } from './settings/settings.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProductComponent } from './products/product/product.component';
+import { InventoryRepository } from './inventory.repository';
 
 
 
@@ -28,7 +29,7 @@ import { ProductComponent } from './products/product/product.component';
     RmaComponent,
     ProductReportsComponent,
     SettingsComponent,
-    ProductComponent
+    ProductComponent,
   ],
   imports: [
     CommonModule,

@@ -60,3 +60,10 @@
 .form-section-blue {
     background-color: #ECF7FF;
 }
+
+.btn-disabled {
+    background-color: #c4c2c2;
+    cursor: default;
+    pointer-events: none;
+    user-select: none;
+}
