@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StatusCardComponent } from './components/status-card/status-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterByParentIdPipe } from './pipes/filterById.pipe';
+import { EnableDisableDirective } from './directives/enableDisable.directive';
 
 
 
 @NgModule({
   declarations: [
-    StatusCardComponent
+    StatusCardComponent,
+    FilterByParentIdPipe,
+    EnableDisableDirective
   ],
   imports: [
     CommonModule,
@@ -17,7 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports: [
     FormsModule,
     ReactiveFormsModule,
-    StatusCardComponent
+    StatusCardComponent,
+    FilterByParentIdPipe,
+    EnableDisableDirective
   ]
 })
 export class SharedModule { }

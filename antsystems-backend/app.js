@@ -5,22 +5,26 @@
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser')
-const orderRouter = require('./routes/orders')
+
+const productRouter = require('./routes/product')
+const categoriesRouter = require('./routes/categories')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // Mongoose 
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost/antsystems', {
+mongoose.connect('mongodb+srv://antsystems_dev:4SQ9iaBd3NjlkLo5@cluster0.lgg6esd.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true
 })
 const db = mongoose.connection
 db.on('error', error => { console.log(error) })
-db.once('open', () => { console.log('Connected to Mongoose') })
+db.once('open', () => { console.log('Connected to AntsystemsDB') })
 
 // Routes
-app.use('/orders', orderRouter)
+app.use('/product', productRouter)
+app.use('/categories', categoriesRouter)
+
 
 app.get('/', (req, res) => {
   res.json({test: 'test'})

@@ -3,10 +3,11 @@
     justify-content: space-evenly;
     height: 100%;
     align-items: center;
+    column-gap: 0.5rem;
 }
 
 .nav-icon {
-    font-size: 32px;
+    font-size: 24px;
     color: #5E7C9F;
     cursor: pointer;
     user-select: none;
