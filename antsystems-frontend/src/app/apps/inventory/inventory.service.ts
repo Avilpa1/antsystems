@@ -9,6 +9,6 @@ export class InventoryService {
   constructor(private http: HttpClient) { }
 
   getProducts() {
-    return this.http.get('api/product')
+    return this.http.get('../../../../../assets/mock/categoryData.json')
   }
 }

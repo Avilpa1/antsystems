@@ -1,0 +1,20 @@
+<form [formGroup]="groupName">
+    <select 
+        [formControl]="controlName" 
+        id="category" 
+        [enableDisable]="prev ? !controlName.parent?.value[prev] : false"
+        (ngModelChange)="resetChildren()"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option [ngValue]="null" selected disabled>{{ placeholder }}</option>
+        <ng-container *ngIf="filter">
+            <ng-container *ngFor="let item of data | filterByParentId: controlName.parent?.value[prev]?.id">
+                <option [ngValue]="item">{{ item[field] }}</option>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!filter">
+            <ng-container *ngFor="let item of data">
+                <option [ngValue]="item">{{ item[field] }}</option>
+            </ng-container>    
+        </ng-container>
+    </select>
+</form>

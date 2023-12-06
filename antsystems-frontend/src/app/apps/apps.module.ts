@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppsRoutingModule } from './apps-routing.module';
 import { MenuComponent } from './menu/menu.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +12,9 @@ import { MenuComponent } from './menu/menu.component';
   ],
   imports: [
     CommonModule,
-    AppsRoutingModule
+    AppsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AppsModule { }

@@ -1,0 +1,285 @@
+{
+    "category": [
+      {
+        "name": "Electronics",
+        "id": 1
+      },
+      {
+        "name": "Clothing",
+        "id": 2
+      }
+    ],
+    "subCategory": [
+      {
+        "name": "Batteries",
+        "id": 1,
+        "parentId": [
+          1
+        ]
+      },
+      {
+        "name": "Televisions",
+        "id": 2,
+        "parentId": [
+          1
+        ]
+      },
+      {
+        "name": "Mens",
+        "id": 3,
+        "parentId": [
+          2
+        ]
+      },
+      {
+        "name": "Womens",
+        "id": 4,
+        "parentId": [
+          2
+        ]
+      }
+    ],
+    "productType": [
+      {
+        "name": "Lithium",
+        "id": 1,
+        "parentId": [
+          1
+        ]
+      },
+      {
+        "name": "Alkaline",
+        "id": 2,
+        "parentId": [
+          1
+        ]
+      },
+      {
+        "name": "Flatscreen",
+        "id": 3,
+        "parentId": [
+          2
+        ]
+      },
+      {
+        "name": "Plasma",
+        "id": 4,
+        "parentId": [
+          2
+        ]
+      },
+      {
+        "name": "Curved",
+        "id": 5,
+        "parentId": [
+          2
+        ]
+      },
+      {
+        "name": "Shirt",
+        "id": 6,
+        "parentId": [
+          3,
+          4
+        ]
+      },
+      {
+        "name": "Pants",
+        "id": 7,
+        "parentId": [
+          3,
+          4
+        ]
+      }
+    ],
+    "subProductType": [
+      {
+        "name": "AA",
+        "id": 1,
+        "parentId": [
+          1
+        ]
+      },
+      {
+        "name": "AA",
+        "id": 2,
+        "parentId": [
+          2
+        ]
+      },
+      {
+        "name": "AAA",
+        "id": 3,
+        "parentId": [
+          1
+        ]
+      },
+      {
+        "name": "AAA",
+        "id": 4,
+        "parentId": [
+          2
+        ]
+      },
+      {
+        "name": "9v",
+        "id": 5,
+        "parentId": [
+          2
+        ]
+      },
+      {
+        "name": "65in",
+        "id": 6,
+        "parentId": [
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "name": "75in",
+        "id": 7,
+        "parentId": [
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "name": "S",
+        "id": 8,
+        "parentId": [
+          6
+        ]
+      },
+      {
+        "name": "M",
+        "id": 9,
+        "parentId": [
+          6
+        ]
+      },
+      {
+        "name": "L",
+        "id": 10,
+        "parentId": [
+          6
+        ]
+      },
+      {
+        "name": "XL",
+        "id": 11,
+        "parentId": [
+          6
+        ]
+      },
+      {
+        "name": "30",
+        "id": 12,
+        "parentId": [
+          7
+        ]
+      },
+      {
+        "name": "32",
+        "id": 13,
+        "parentId": [
+          7
+        ]
+      },
+      {
+        "name": "34",
+        "id": 14,
+        "parentId": [
+          7
+        ]
+      }
+    ],
+    "brandName": [
+        {
+            "name": "Energizer", 
+            "id": 1
+        },
+        {
+            "name": "Duracell", 
+            "id": 2
+        },
+        {
+            "name": "Panasonic", 
+            "id": 3
+        }
+    ],
+    "subBrandName": [
+        {
+            "name": "MAX", 
+            "id": 1,
+            "parentId": [1]
+        },
+        {
+            "name": "TT", 
+            "id": 2,
+            "parentId": [1]
+
+        },
+        {
+            "name": "AA", 
+            "id": 3,
+            "parentId": [1]
+
+        },
+        {
+            "name": "DD", 
+            "id": 4,
+            "parentId": [1]
+
+        },        {
+            "name": "Ultimate Lithium", 
+            "id": 5,
+            "parentId": [1]
+
+        },
+        {
+            "name": "Rechargeable Universal", 
+            "id": 6,
+            "parentId": [1]
+
+        },
+        {
+            "name": "Power Boost", 
+            "id": 7,
+            "parentId": [2]
+
+        },
+        {
+            "name": "Super Heavy Duty", 
+            "id": 8,
+            "parentId": [3]
+
+        }
+    ],
+    "measuringType": [
+        {
+            "name": "Inches", 
+            "id": 1,
+            "MeasuringType": "In"
+        },
+        {
+            "name": "Centimeters", 
+            "id": 2,
+            "MeasuringType": "Cm"
+        }
+    ],
+    "weightType": [
+        {
+            "name": "Pound", 
+            "id": 1,
+            "weightType": "Lb"
+        },
+        {
+            "name": "Kilogram", 
+            "id": 2,
+            "weightType": "Kg"
+        }
+    ]
+}

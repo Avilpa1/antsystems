@@ -25,7 +25,7 @@ export interface BrandName {
 }
 
 export interface Categories {
-    categoryMain:   CategoryItem[];
+    category:   CategoryItem[];
     subCategory:    CategoryItem[];
     productType:    CategoryItem[];
     subProductType: CategoryItem[];

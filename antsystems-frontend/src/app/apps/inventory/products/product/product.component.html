@@ -149,59 +149,62 @@
                     <label for="first_name"
                         class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Categories</label>
                     <hr class="border-2 border-black border-solid">
-                    <div formGroupName="categories" class="flex gap-4 form-section p-4 justify-between"
-                        *ngIf="(categoriesData | async) as data">
+                    <div formGroupName="categories" class="flex gap-4 form-section p-4 justify-between">
                         <div class="w-1/6">
                             <label for="category"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Category</label>
-                            <select formControlName="category" id="category"
-                                (change)="resetChildren('categories.subCategory')"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <ng-container *ngFor="let item of data.categoryMain">
-                                    <option [ngValue]="item.id">{{ item.name }}</option>
-                                </ng-container>
-                            </select>
+                            <ant-select
+                                [data]="inventoryRepo.categories$ | async"
+                                [groupName]="productForm"
+                                subGroupName="categories"
+                                [controlName]="productForm.get('categories.category')"
+                                next="subCategory"
+                                placeholder="Category"
+                            ></ant-select>
                         </div>
                         <div class="w-1/6">
                             <label for="sub_category"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub
                                 Category</label>
-                            <select formControlName="subCategory" id="category"
-                                [enableDisable]="!productForm.get('categories.category')?.value"
-                                (change)="resetChildren('categories.productType')"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <ng-container
-                                    *ngFor="let item of data.subCategory | filterByParentId: productForm.get('categories.category')?.value">
-                                    <option [ngValue]="item.id">{{ item.name }}</option>
-                                </ng-container>
-                            </select>
+                            <ant-select
+                                [data]="inventoryRepo.subCategories$ | async"
+                                [groupName]="productForm"
+                                subGroupName="categories"
+                                [controlName]="productForm.get('categories.subCategory')"
+                                prev="category"
+                                next="productType"
+                                [filter]="true"
+                                placeholder="Sub Category"
+                            ></ant-select>
                         </div>
                         <div class="w-1/6">
                             <label for="product_type"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Product
                                 Type</label>
-                            <select formControlName="productType" id="category"
-                                [enableDisable]="!productForm.get('categories.subCategory')?.value"
-                                (change)="resetChildren('categories.subProductType')"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <ng-container
-                                    *ngFor="let item of data.productType | filterByParentId: productForm.get('categories.subCategory')?.value">
-                                    <option [ngValue]="item.id">{{ item.name }}</option>
-                                </ng-container>
-                            </select>
+                            <ant-select
+                                [data]="inventoryRepo.productType$ | async"
+                                [groupName]="productForm"
+                                subGroupName="categories"
+                                [controlName]="productForm.get('categories.productType')"
+                                prev="subCategory"
+                                next="subProductType"
+                                [filter]="true"
+                                placeholder="Product Type"
+                            ></ant-select>
                         </div>
                         <div class="w-1/6">
                             <label for="sub_product_type"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub Product
                                 Type</label>
-                            <select formControlName="subProductType" id="category"
-                                [enableDisable]="!productForm.get('categories.productType')?.value"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <ng-container
-                                    *ngFor="let item of data.subProductType | filterByParentId: productForm.get('categories.productType')?.value">
-                                    <option [ngValue]="item.id">{{ item.name }}</option>
-                                </ng-container>
-                            </select>
+                            <ant-select
+                                [data]="inventoryRepo.subProductType$ | async"
+                                [groupName]="productForm"
+                                subGroupName="categories"
+                                [controlName]="productForm.get('categories.subProductType')"
+                                prev="productType"
+                                [filter]="true"
+                                placeholder="Sub Product Type"
+                            ></ant-select>
                         </div>
                     </div>
                 </div>
@@ -214,16 +217,27 @@
                         <div class="w-1/6">
                             <label for="brand_name"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Brand Name</label>
-                            <input formControlName="brandName" type="text" id="brand_name"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Brand Name">
+                            <ant-select
+                                [data]="inventoryRepo.brandName$ | async"
+                                [groupName]="productForm"
+                                subGroupName="brandName"
+                                [controlName]="productForm.get('brandName.brandName')"
+                                next="subBrand"
+                                placeholder="Brand Name"
+                            ></ant-select>
                         </div>
                         <div class="w-1/6">
                             <label for="sub_brand"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub Brand</label>
-                            <input formControlName="subBrand" type="text" id="sub_brand"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Sub Brand">
+                            <ant-select
+                                [data]="inventoryRepo.subBrandName$ | async"
+                                [groupName]="productForm"
+                                subGroupName="brandName"
+                                [controlName]="productForm.get('brandName.subBrand')"
+                                prev="brandName"
+                                [filter]="true"
+                                placeholder="Sub Brand Name"
+                            ></ant-select>
                         </div>
                     </div>
                 </div>

@@ -1,147 +1,27 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Categories, Product } from './products.models';
 import { Observable, Subject, of } from 'rxjs'
+import { InventoryRepository } from '../../inventory.repository';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class ProductComponent {
   productForm!: FormGroup;
 
   public categoriesData: Observable<Categories> = new Observable()
-  data:any = {
-    "categoryMain": [
-        {
-            "name": "Electronics",
-            "id": 1
-        },
-        {
-            "name": "Clothing",
-            "id": 2
-        }
-    ],
-    "subCategory": [
-        {
-            "name": "Batteries",
-            "id": 1,
-            "parentId": [1]
-        },
-        {
-            "name": "Televisions",
-            "id": 2,
-            "parentId": [1]
-        },
-        {
-          "name": "Mens",
-          "id": 3,
-          "parentId": [2]
-      },
-      {
-          "name": "Womens",
-          "id": 4,
-          "parentId": [2]
-      }
-    ],
-    "productType": [
-        {
-            "name": "Lithium",
-            "id": 1,
-            "parentId": [1]
 
-        },
-        {
-            "name": "Alkaline",
-            "id": 2,
-            "parentId": [1]
-
-        },
-        {
-            "name": "Flatscreen",
-            "id": 3,
-            "parentId": [2]
-
-        },
-        {
-            "name": "Plasma",
-            "id": 4,
-            "parentId": [2]
-
-        },
-        {
-            "name": "Curved",
-            "id": 5,
-            "parentId": [2]
-
-        },
-        {
-          "name": "Shirt",
-          "id": 6,
-          "parentId": [3, 4]
-
-        },
-    ],
-    "subProductType": [
-        {
-            "name": "AA",
-            "id": 1,
-            "parentId": [1]
-        },
-        {
-            "name": "AA",
-            "id": 2,
-            "parentId": [2]
-        },
-        {
-            "name": "AAA",
-            "id": 3,
-            "parentId": [1]
-        },
-        {
-            "name": "AAA",
-            "id": 4,
-            "parentId": [2]
-        },
-        {
-          "name": "9v",
-          "id": 5,
-          "parentId": [2]
-        },
-        {
-          "name": "65in",
-          "id": 6,
-          "parentId": [3, 4, 5]
-        },
-        {
-          "name": "75in",
-          "id": 7,
-          "parentId": [3, 4, 5]
-        },
-        {
-          "name": "S",
-          "id": 8,
-          "parentId": [6]
-        },
-        {
-          "name": "M",
-          "id": 9,
-          "parentId": [6]
-        },        {
-          "name": "L",
-          "id": 10,
-          "parentId": [6]
-        },
-    ]
-
-  }
-  constructor() {
+  constructor(public inventoryRepo: InventoryRepository) {
     this.initForm()
-    this.categoriesData.subscribe(res => {
-      console.log(res)
-    })
-    this.categoriesData = of(this.data)
+    // this.categoriesData.subscribe(res => {
+    //   console.log(res)
+    // })
+    // this.categoriesData = of(this.data)
   }
 
   initForm() {
@@ -171,8 +51,8 @@ export class ProductComponent {
           subProductType: new FormControl({value: null, disabled: true}, [Validators.required]),
         }),
         brandName: new FormGroup({
-          brandName: new FormControl('', [Validators.required]),
-          subBrand: new FormControl('', [Validators.required]),
+          brandName: new FormControl({value: null, disabled: true}, [Validators.required]),
+          subBrand: new FormControl({value: null, disabled: true}, [Validators.required]),
         }),
         measuringDetails: new FormGroup({
           lengthWidthHeight: new FormControl('', [Validators.required]),
@@ -202,25 +82,18 @@ export class ProductComponent {
 
       }
     )
-    console.warn(this.productForm)
+    // console.warn(this.productForm)
   }
 
   resetChildren(controlName: string) {
     const control = this.productForm.get(controlName)
     control?.reset()
-    console.warn(this.productForm.get('categories'))
-    // const controls = controlName.split('.')
-    // console.warn(this.data.categories.controls[1].array.filter((item: any) => item.parentId.includes(control?.value)))
-    // if (control?.value == null) {
-    //   control?.enable()
-    // } else {
-    //   control?.disable()
-    // }
+    // console.warn(this.productForm.get('categories'))
   }
 
 
   onSave() {
-    console.warn(this.productForm)
+    console.warn(this.productForm.value)
   }
 
 

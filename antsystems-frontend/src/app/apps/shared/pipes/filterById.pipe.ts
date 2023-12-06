@@ -6,8 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 
 export class FilterByParentIdPipe implements PipeTransform {
-    transform(array : any, id: number) {
-        if (array) {
+    transform(array : any, id: number | null) {
+        if (id) {
             const res = array.filter((item: any) => item.parentId.includes(id))
             return res;
         }
