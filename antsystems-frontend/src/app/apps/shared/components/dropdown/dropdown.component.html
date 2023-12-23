@@ -1,12 +1,20 @@
-<div class="card flex flex-col">
-    <span class="text-xs font-semibold">{{title}}</span>
-    <div class="flex h-full items-center gap-x-4">
-        <span class="material-symbols-outlined text-5xl" [ngClass]="color">
-            {{icon}}
-        </span>
-        <div>
-            <div>{{products}} Products</div>
-            <div>{{categories}} Categories</div>
-        </div> 
-    </div>
-</div>
+<input type="text" id="sku"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    placeholder="SKU" 
+    [value]="value" 
+    (click)="show = true">
+<div *ngIf="show"
+    class="absolute z-50 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full focus-visible:outline-none flex flex-col text-center">
+    <span 
+        *ngFor="let action of actionBtnConfig" 
+        class="cursor-pointer py-1 text-blue-500 text-sm select-none"
+        (click)="actionBtnClicked(action.name)">
+        {{ action.name }} +
+    </span>
+    <span *ngFor="let option of optionsData"
+        class="cursor-pointer py-1 text-sm hover:bg-blue-500 w-full hover:text-white select-none"
+        (click)="selectOption(option.name)">
+        {{ option.name }}
+    </span>
+</div>    
+<div *ngIf="show" class="bg-transparent w-full h-full fixed top-0 left-0" (click)="show = false"></div>

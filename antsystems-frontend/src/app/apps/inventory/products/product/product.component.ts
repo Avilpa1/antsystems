@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Categories, Product } from './products.models';
 import { Observable, Subject, of } from 'rxjs'
 import { InventoryRepository } from '../../inventory.repository';
+import { ModalService } from 'src/app/apps/shared/components/modal/modal.service';
+import { CreateSkuComponent } from '../../modal/create-sku/create-sku.component';
 
 @Component({
   selector: 'app-product',
@@ -13,20 +15,31 @@ import { InventoryRepository } from '../../inventory.repository';
 })
 export class ProductComponent {
   productForm!: FormGroup;
-
+  canEditItem: boolean = true;
   public categoriesData: Observable<Categories> = new Observable()
+  itemData: any = null;
 
-  constructor(public inventoryRepo: InventoryRepository) {
+  actionBtnConfig = [{
+    name: "New SKU"
+  }]
+
+  constructor(public inventoryRepo: InventoryRepository, public modal: ModalService) {
     this.initForm()
     // this.categoriesData.subscribe(res => {
     //   console.log(res)
     // })
     // this.categoriesData = of(this.data)
+    if (this.itemData) {
+      this.canEditItem = false
+    }
   }
 
   initForm() {
     this.productForm = new FormGroup(
       {
+        active: new FormControl(true),
+        sku: new FormControl(null, [Validators.required]),
+        description: new FormControl(null, [Validators.required]),
         unitDetails: new FormGroup({
             masterCase: new FormControl('', [Validators.required]),
             innerBox: new FormControl('', [Validators.required]),
@@ -57,9 +70,9 @@ export class ProductComponent {
         measuringDetails: new FormGroup({
           lengthWidthHeight: new FormControl('', [Validators.required]),
           volume: new FormControl('', [Validators.required]),
-          measType: new FormControl('', [Validators.required]),
+          measuringType: new FormControl(null, [Validators.required]),
           weight: new FormControl('', [Validators.required]),
-          weightType: new FormControl('', [Validators.required]),
+          weightType: new FormControl(null, [Validators.required]),
           totalPoundPallet: new FormControl('', [Validators.required]),
         }),
         barcode: new FormGroup({
@@ -69,8 +82,8 @@ export class ProductComponent {
           piece: new FormControl('', [Validators.required]),
         }),
         locations: new FormGroup({
-          warehouseLocation: new FormControl('', [Validators.required]),
-          binLocation: new FormControl('', [Validators.required]),
+          warehouseLocation: new FormControl(null, [Validators.required]),
+          binLocation: new FormControl({value: null, disabled: true}, [Validators.required]),
         }),
         expirationDetails: new FormGroup({
           manufactureDate: new FormControl('', [Validators.required]),
@@ -82,6 +95,7 @@ export class ProductComponent {
 
       }
     )
+    // this.productForm.disable();
     // console.warn(this.productForm)
   }
 
@@ -93,8 +107,22 @@ export class ProductComponent {
 
 
   onSave() {
-    console.warn(this.productForm.value)
+    console.warn(this.productForm)
   }
 
+  toggleLock() {
+    if (this.canEditItem) {
+      this.canEditItem = false;
+      this.productForm.disable()
+    } else {
+      this.canEditItem = true;
+      this.productForm.enable();
+    }
+  }
+
+  openModalCreateNewSku() {
+    console.warn('fired')
+    this.modal.open(CreateSkuComponent, {name: 'Note', width: '35rem'});
+  }
 
 }

@@ -5,38 +5,56 @@
         <div><span>On Order: </span><span class="text-yellow-500 font-bold">2,500 pcs / 50 cases</span></div>
         <div><span>On MultiWarehouse: </span><span class="text-purple-500 font-bold">265,000 pcs / 35,000 cases</span>
         </div>
-        <div class="flex items-center mb-4">
-            <input id="default-checkbox" type="checkbox" value=""
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="default-checkbox"
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Inactive</label>
-        </div>
+        <form [formGroup]="productForm">
+            <div class="flex items-center mb-4">
+                <input id="default-checkbox" type="checkbox" formControlName="active"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-checkbox"
+                    class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    {{ productForm.get('active')?.value ? "Active" : "Inactive"}}
+                </label>
+            </div>
+        </form>
     </div>
 
     <div class="flex">
         <div class="w-4/5">
-            <div class="flex justify-between">
-                <div class="flex gap-4 w-5/6">
-                    <div class="w-1/4">
-                        <label for="first_name"
-                            class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Search SKU</label>
-                        <input type="text" id="first_name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="SKU">
-                    </div>
-                    <div class="w-1/4">
-                        <label for="first_name"
-                            class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Description</label>
-                        <input type="text" id="first_name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Description">
-                    </div>
-                </div>
-                <span class="material-symbols-outlined text-4xl w-1/6 flex justify-end items-center">
-                    lock
-                </span>
-            </div>
             <form [formGroup]="productForm">
+                <div class="flex justify-between">
+                    <div class="flex gap-4 w-5/6">
+                        <div class="w-1/4 relative">
+                            <label for="first_name"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Search SKU</label>
+                                <!-- <ng-container *ngFor="let dropdown of [{show: false, value: ''}]">
+                                    <input type="text" id="sku" formGroupName="sku"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="SKU"
+                                        [value]="dropdown.value"
+                                        (click)="dropdown.show = true">
+                                        <div *ngIf="dropdown.show" class="absolute bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full focus-visible:outline-none flex flex-col text-center">
+                                            <span class="cursor-pointer py-1 text-blue-500 text-sm select-none" (click)="dropdown.value = ''; openModalCreateNewSku(); dropdown.show = false">New SKU +</span>
+                                            <span class="cursor-pointer py-1 text-sm hover:bg-blue-500 w-full hover:text-white select-none" (click)="dropdown.value = 'EP90BP-4'; dropdown.show = false">EP90BP-4</span>
+                                            <span class="cursor-pointer py-1 text-sm hover:bg-blue-500 w-full hover:text-white select-none" (click)="dropdown.value = 'MSK-2000-BLK'; dropdown.show = false">MSK-2000-BLK</span>
+                                            <span class="cursor-pointer py-1 text-sm hover:bg-blue-500 w-full hover:text-white select-none" (click)="dropdown.value = 'GLL-167ML-SH'; dropdown.show = false">GLL-167ML-SH</span>
+                                        </div>                                    
+                                </ng-container> -->
+                                <ant-dropdown [actionBtnConfig]="actionBtnConfig" (actionBtnEvent)="openModalCreateNewSku()"></ant-dropdown>
+
+                        </div>
+                        <div class="w-1/3">
+                            <label for="first_name"
+                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Description</label>
+                            <input type="text" id="first_name" formGroupName="description"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Description">
+                        </div>
+                    </div>
+                    <span 
+                        (click)="toggleLock()" 
+                        class="material-symbols-outlined text-4xl w-1/6 flex justify-end items-center cursor-pointer">
+                        {{canEditItem ? "lock_open" : "lock"}}
+                    </span>
+                </div>
                 <!-- Unit Details -->
                 <div class="mt-6">
                     <label for="first_name" class="block mb-1 text-base font-medium text-gray-900 dark:text-white">Unit
@@ -151,9 +169,8 @@
                     <hr class="border-2 border-black border-solid">
                     <div formGroupName="categories" class="flex gap-4 form-section p-4 justify-between">
                         <div class="w-1/6">
-                            <label for="category"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Category</label>
                             <ant-select
+                                label="Category"
                                 [data]="inventoryRepo.categories$ | async"
                                 [groupName]="productForm"
                                 subGroupName="categories"
@@ -163,10 +180,8 @@
                             ></ant-select>
                         </div>
                         <div class="w-1/6">
-                            <label for="sub_category"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub
-                                Category</label>
                             <ant-select
+                                label="Sub Category"
                                 [data]="inventoryRepo.subCategories$ | async"
                                 [groupName]="productForm"
                                 subGroupName="categories"
@@ -178,10 +193,8 @@
                             ></ant-select>
                         </div>
                         <div class="w-1/6">
-                            <label for="product_type"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Product
-                                Type</label>
                             <ant-select
+                                label="Product Type"
                                 [data]="inventoryRepo.productType$ | async"
                                 [groupName]="productForm"
                                 subGroupName="categories"
@@ -193,10 +206,8 @@
                             ></ant-select>
                         </div>
                         <div class="w-1/6">
-                            <label for="sub_product_type"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub Product
-                                Type</label>
                             <ant-select
+                                label="Sub Product Type"
                                 [data]="inventoryRepo.subProductType$ | async"
                                 [groupName]="productForm"
                                 subGroupName="categories"
@@ -215,9 +226,8 @@
                     <hr class="border-2 border-black border-solid">
                     <div formGroupName="brandName" class="flex gap-4 form-section p-4">
                         <div class="w-1/6">
-                            <label for="brand_name"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Brand Name</label>
                             <ant-select
+                                label="Brand Name"
                                 [data]="inventoryRepo.brandName$ | async"
                                 [groupName]="productForm"
                                 subGroupName="brandName"
@@ -227,9 +237,8 @@
                             ></ant-select>
                         </div>
                         <div class="w-1/6">
-                            <label for="sub_brand"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Sub Brand</label>
                             <ant-select
+                                label="Sub Brand"
                                 [data]="inventoryRepo.subBrandName$ | async"
                                 [groupName]="productForm"
                                 subGroupName="brandName"
@@ -265,11 +274,14 @@
                                 placeholder="Volume CBM / CBF">
                         </div>
                         <div class="w-1/6">
-                            <label for="meas_type"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Meas Type</label>
-                            <input formControlName="measType" type="text" id="meas_type"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Meas Type">
+                            <ant-select
+                                label="Meas Type"
+                                [data]="inventoryRepo.measuringType$ | async"
+                                [groupName]="productForm"
+                                subGroupName="measuringDetails"
+                                [controlName]="productForm.get('measuringDetails.measuringType')"
+                                placeholder="Meas Type"
+                            ></ant-select>
                         </div>
                         <div class="w-1/6">
                             <label for="weight"
@@ -279,11 +291,14 @@
                                 placeholder="Weight">
                         </div>
                         <div class="w-1/6">
-                            <label for="weight_type"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Weight Type</label>
-                            <input formControlName="weightType" type="text" id="weight_type"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Weight Type">
+                            <ant-select
+                                label="Weight Type"
+                                [data]="inventoryRepo.weightType$ | async"
+                                [groupName]="productForm"
+                                subGroupName="measuringDetails"
+                                [controlName]="productForm.get('measuringDetails.weightType')"
+                                placeholder="Weight Type"
+                            ></ant-select>
                         </div>
                         <div class="w-1/6">
                             <label for="total_pound_pallet"
@@ -338,20 +353,27 @@
                     <hr class="border-2 border-black border-solid">
                     <div formGroupName="locations" class="flex gap-4 form-section p-4">
                         <div class="w-1/6">
-                            <label for="warehouse_location"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Warehouse
-                                Location</label>
-                            <input formControlName="warehouseLocation" type="text" id="warehouse_location"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Warehouse Location">
+                            <ant-select
+                                label="Warehouse Location"
+                                [data]="inventoryRepo.warehouseLocations$ | async"
+                                [groupName]="productForm"
+                                subGroupName="locations"
+                                [controlName]="productForm.get('locations.warehouseLocation')"
+                                next="binLocation"
+                                placeholder="Warehouse Location"
+                            ></ant-select>
                         </div>
                         <div class="w-1/6">
-                            <label for="bin_location"
-                                class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Bin
-                                Location</label>
-                            <input formControlName="binLocation" type="text" id="bin_location"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Bin Location">
+                            <ant-select
+                                label="Bin Location"
+                                [data]="inventoryRepo.binLocations$ | async"
+                                [groupName]="productForm"
+                                subGroupName="locations"
+                                [controlName]="productForm.get('locations.binLocation')"
+                                placeholder="Bin Location"
+                                prev="warehouseLocation"
+                                [filter]="true"
+                            ></ant-select>
                         </div>
                     </div>
                 </div>

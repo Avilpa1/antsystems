@@ -1,0 +1,114 @@
+[
+    {
+        "id": 1,
+        "active": true,
+        "unitDetails": {
+            "masterCase": "",
+            "innerBox": "",
+            "pack": "",
+            "pieces": "",
+            "caseByPallet": "",
+            "rowAndCase": ""
+        },
+        "marketplace": {
+            "iSku": ""
+        },
+        "priceDetails": {
+            "retailPrice": "",
+            "wholesalePrice": "",
+            "distributor": "",
+            "onlinePrice": ""
+        },
+        "categories": {
+            "category": {
+                "name": "Electronics",
+                "id": 1
+            },
+            "subCategory": {
+                "name": "Batteries",
+                "id": 1,
+                "parentId": [
+                    1
+                ]
+            },
+            "productType": {
+                "name": "Lithium",
+                "id": 1,
+                "parentId": [
+                    1
+                ]
+            },
+            "subProductType": {
+                "name": "AAA",
+                "id": 3,
+                "parentId": [
+                    1
+                ]
+            }
+        },
+        "brandName": {
+            "brandName": {
+                "name": "Energizer",
+                "id": 1
+            },
+            "subBrand": {
+                "name": "DD",
+                "id": 4,
+                "parentId": [
+                    1
+                ]
+            }
+        },
+        "measuringDetails": {
+            "lengthWidthHeight": "",
+            "volume": "",
+            "measuringType": {
+                "name": "Inches",
+                "id": 1,
+                "MeasuringType": "In"
+            },
+            "weight": "",
+            "weightType": {
+                "name": "Pound",
+                "id": 1,
+                "weightType": "Lb"
+            },
+            "totalPoundPallet": ""
+        },
+        "barcode": {
+            "case": "",
+            "inner": "",
+            "pack": "",
+            "piece": ""
+        },
+        "locations": {
+            "warehouseLocation": {
+                "id": 1,
+                "name": "Main Warehouse",
+                "address": {
+                    "street": "11340 Highway 67",
+                    "street2": "",
+                    "city": "Lakeside",
+                    "state": "CA",
+                    "zip": "92040",
+                    "country": "USA"
+                }
+            },
+            "binLocation": {
+                "id": 1,
+                "parentId": [
+                    1
+                ],
+                "name": "A105",
+                "note": ""
+            }
+        },
+        "expirationDetails": {
+            "manufactureDate": "",
+            "expirationDate": "",
+            "lot": "",
+            "madeIn": "",
+            "serialNumber": ""
+        }
+    }
+]

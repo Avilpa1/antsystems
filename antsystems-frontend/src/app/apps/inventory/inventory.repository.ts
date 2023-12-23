@@ -48,16 +48,28 @@ const subBrandNameStore = createStore(
   withRequestsCache<'subBrandName'>()
 );
 
-const subBrandNameStore = createStore(
-  { name: 'subBrandName' },
+const measuringTypeStore = createStore(
+  { name: 'measuringType' },
   withEntities<any>(),
-  withRequestsCache<'subBrandName'>()
+  withRequestsCache<'measuringType'>()
 );
 
-const subBrandNameStore = createStore(
-  { name: 'subBrandName' },
+const weightTypeStore = createStore(
+  { name: 'weightType' },
   withEntities<any>(),
-  withRequestsCache<'subBrandName'>()
+  withRequestsCache<'weightType'>()
+);
+
+const warehouseLocationsStore = createStore(
+  { name: 'warehouseLocations' },
+  withEntities<any>(),
+  withRequestsCache<'warehouseLocations'>()
+);
+
+const binLocationsStore = createStore(
+  { name: 'binLocations' },
+  withEntities<any>(),
+  withRequestsCache<'binLocations'>()
 );
 @Injectable({ providedIn: 'root' })
 export class InventoryRepository {
@@ -71,6 +83,10 @@ export class InventoryRepository {
     subProductType$ = subProductTypeStore.pipe(selectAllEntities());
     brandName$ = brandNameStore.pipe(selectAllEntities());
     subBrandName$ = subBrandNameStore.pipe(selectAllEntities());
+    measuringType$ = measuringTypeStore.pipe(selectAllEntities());
+    weightType$ = weightTypeStore.pipe(selectAllEntities());
+    warehouseLocations$ = warehouseLocationsStore.pipe(selectAllEntities());
+    binLocations$ = binLocationsStore.pipe(selectAllEntities());
 
     setStores(product: any) {
       categoryStore.update(updateRequestCache('category'), setEntities(product?.category));
@@ -79,7 +95,10 @@ export class InventoryRepository {
       subProductTypeStore.update(updateRequestCache('subProductType'), setEntities(product?.subProductType));
       brandNameStore.update(updateRequestCache('brandName'), setEntities(product?.brandName));
       subBrandNameStore.update(updateRequestCache('subBrandName'), setEntities(product?.subBrandName));
-
+      measuringTypeStore.update(updateRequestCache('measuringType'), setEntities(product?.measuringType));
+      weightTypeStore.update(updateRequestCache('weightType'), setEntities(product?.weightType));
+      warehouseLocationsStore.update(updateRequestCache('warehouseLocations'), setEntities(product?.warehouseLocations));
+      binLocationsStore.update(updateRequestCache('binLocations'), setEntities(product?.binLocations));
     }
 
     fetchData() {

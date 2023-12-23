@@ -61,3 +61,14 @@ body {
 .emergency {
   color: #FF000B;
 }
+
+label {
+  user-select: none;
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+}
+
+input {
+  @apply focus-visible:outline-none
+}

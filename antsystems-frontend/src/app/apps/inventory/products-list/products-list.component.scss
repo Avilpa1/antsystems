@@ -1,0 +1,16 @@
+.product-container {
+    margin-block: 1.25rem;
+    margin-inline: 20px;
+    border-radius: 10px;
+    background: #FFF;
+
+    .header {
+        border-radius: 10px 10px 0 0;
+        height: 37px;
+        background: #75889D;
+    }
+
+    .content {
+        padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+    }
+}

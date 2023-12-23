@@ -14,6 +14,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProductComponent } from './products/product/product.component';
 import { InventoryRepository } from './inventory.repository';
+import { CreateSkuComponent } from './modal/create-sku/create-sku.component';
 
 
 
@@ -30,6 +31,7 @@ import { InventoryRepository } from './inventory.repository';
     ProductReportsComponent,
     SettingsComponent,
     ProductComponent,
+    CreateSkuComponent
   ],
   imports: [
     CommonModule,

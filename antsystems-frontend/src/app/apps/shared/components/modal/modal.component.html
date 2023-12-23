@@ -1,0 +1,13 @@
+<div class="w-screen h-screen overlay" (click)="modalService.close()"></div>
+
+<div class="modalContainer shadow-md rounded-lg ">
+    <div class="header rounded-t-lg p-2 px-3 flex justify-between">
+        <span>{{ modalName }}</span>
+        <span class="material-symbols-outlined close-icon" (click)="modalService.close()">
+            close
+        </span>
+    </div>
+    <ng-content></ng-content>
+    
+</div>
+

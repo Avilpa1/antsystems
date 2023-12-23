@@ -1,1 +1,12 @@
-<p>products-list works!</p>
+<div class="product-container">
+    <div class="header flex justify-center items-center text-white font-semibold">Item List</div>
+    <div class="content">
+        <gui-grid 
+            [source]="source" 
+            [columns]="columns" 
+            [sorting]="sorting"
+            [verticalGrid]="false"
+            [horizontalGrid]="true">
+        </gui-grid>
+    </div>
+</div>

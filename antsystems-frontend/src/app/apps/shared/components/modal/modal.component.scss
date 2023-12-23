@@ -1,0 +1,32 @@
+$modal-height: var(--modal-height);
+$modal-width: var(--modal-width);
+
+.overlay {
+    position: fixed;
+    top: 0;
+}
+
+.modalContainer {
+    position: fixed;
+    top: calc(50% -  #{$modal-height} / 2);
+    left: calc(50% -  #{$modal-width} / 2);
+    background-color: white;
+    height:  #{$modal-height};
+    width:  #{$modal-width};
+}
+
+.header {
+    background-color: #99ADB5;
+}
+
+.close-icon {
+    background-color: black;
+    display: flex;
+    align-self: center;
+    font-weight: 800;
+    padding-left: 1px;
+    border-radius: 3px;
+    color: #99ADB5;
+    font-size: 17px;
+    cursor: pointer;
+}

@@ -281,5 +281,45 @@
             "id": 2,
             "weightType": "Kg"
         }
+    ],
+    "warehouseLocations": [
+        {
+            "id": 1,
+            "name": "Main Warehouse", 
+            "address": {
+                "street": "11340 Highway 67",
+                "street2": "",
+                "city": "Lakeside",
+                "state": "CA",
+                "zip": "92040",
+                "country": "USA"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Secondary Warehouse", 
+            "address": {
+                "street": "2260 Delany Dr.",
+                "street2": "",
+                "city": "San Ysidro",
+                "state": "CA",
+                "zip": "92173",
+                "country": "USA"
+            }
+        }
+    ],
+    "binLocations": [
+        {
+            "id": 1,
+            "parentId": [1],
+            "name": "A105",
+            "note": ""
+        },
+        {
+            "id": 2,
+            "parentId": [2],
+            "name": "G75",
+            "note": ""
+        }
     ]
 }

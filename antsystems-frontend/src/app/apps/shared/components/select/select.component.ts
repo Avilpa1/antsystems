@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -18,17 +18,17 @@ export class SelectComponent {
   @Input() filter: boolean = false;
   @Input() placeholder = 'Please Select'
   @Input() field: string = 'name';
+  @Input() label: string | null = null;
 
-  constructor(private cdr: ChangeDetectorRef) { 
-    // setTimeout(() => {
-    //       console.warn(this.data)
-
-    // }, 2000);
-  }
+  constructor() {}
 
   resetChildren() {
     const control = this.groupName.get(`${this.subGroupName}.${this.next}`)
     control?.reset()
+  }
+
+  actionBtnClicked() {
+    console.log('test')
   }
 
 }

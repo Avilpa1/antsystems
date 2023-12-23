@@ -5,20 +5,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterByParentIdPipe } from './pipes/filterById.pipe';
 import { EnableDisableDirective } from './directives/enableDisable.directive';
 import { SelectComponent } from './components/select/select.component';
-
-
+import { GuiGridModule } from '@generic-ui/ngx-grid';
+import { ModalComponent } from './components/modal/modal.component';
+import { ModalFactoryComponent } from './components/modal/modal-factory/modal-factory.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
     StatusCardComponent,
     FilterByParentIdPipe,
     EnableDisableDirective,
-    SelectComponent
+    SelectComponent,
+    ModalComponent,
+    ModalFactoryComponent,
+    DropdownComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GuiGridModule
   ],
   exports: [
     FormsModule,
@@ -26,7 +32,11 @@ import { SelectComponent } from './components/select/select.component';
     StatusCardComponent,
     FilterByParentIdPipe,
     EnableDisableDirective,
-    SelectComponent
+    SelectComponent,
+    GuiGridModule,
+    ModalComponent,
+    ModalFactoryComponent,
+    DropdownComponent
   ]
 })
 export class SharedModule { }
