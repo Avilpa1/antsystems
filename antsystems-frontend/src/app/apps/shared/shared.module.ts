@@ -9,6 +9,7 @@ import { GuiGridModule } from '@generic-ui/ngx-grid';
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalFactoryComponent } from './components/modal/modal-factory/modal-factory.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { TextFilterPipe } from './pipes/filterByKeyword.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     SelectComponent,
     ModalComponent,
     ModalFactoryComponent,
-    DropdownComponent
+    DropdownComponent,
+    TextFilterPipe
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     GuiGridModule,
     ModalComponent,
     ModalFactoryComponent,
-    DropdownComponent
+    DropdownComponent,
+    TextFilterPipe
   ]
 })
 export class SharedModule { }

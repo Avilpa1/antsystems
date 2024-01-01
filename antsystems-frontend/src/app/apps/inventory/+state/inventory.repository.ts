@@ -9,8 +9,8 @@ import {
 } from '@ngneat/elf-requests';
 import { fromFetch } from 'rxjs/fetch';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { Product } from './products/product/products.models';
-import { InventoryService } from './inventory.service';
+import { Product } from '../products/product/products.models';
+import { InventoryService } from '../inventory.service';
 
 const categoryStore = createStore(
   { name: 'category' },

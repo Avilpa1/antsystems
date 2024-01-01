@@ -2,9 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Categories, Product } from './products.models';
 import { Observable, Subject, of } from 'rxjs'
-import { InventoryRepository } from '../../inventory.repository';
+import { InventoryRepository } from '../../+state/inventory.repository';
 import { ModalService } from 'src/app/apps/shared/components/modal/modal.service';
 import { CreateSkuComponent } from '../../modal/create-sku/create-sku.component';
+import { ItemRepository } from '../../+state/item.repository';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -23,21 +25,32 @@ export class ProductComponent {
     name: "New SKU"
   }]
 
-  constructor(public inventoryRepo: InventoryRepository, public modal: ModalService) {
+  constructor(
+    public inventoryRepo: InventoryRepository,
+    public itemRepo: ItemRepository,  
+    public modal: ModalService,
+    private route: ActivatedRoute) {
     this.initForm()
-    // this.categoriesData.subscribe(res => {
-    //   console.log(res)
-    // })
-    // this.categoriesData = of(this.data)
     if (this.itemData) {
       this.canEditItem = false
     }
+    const sku = this.route.snapshot.params['sku'];  
+    if (sku) {
+      this.itemRepo.items$.subscribe(() => {
+        this.productForm.patchValue(this.itemRepo.getItemBySku(sku))
+        this.canEditItem = false;
+        this.productForm.disable();
+      })
+    }
+
+
   }
 
   initForm() {
     this.productForm = new FormGroup(
       {
         active: new FormControl(true),
+        item: new FormControl(null, [Validators.required]),
         sku: new FormControl(null, [Validators.required]),
         description: new FormControl(null, [Validators.required]),
         unitDetails: new FormGroup({
@@ -105,9 +118,13 @@ export class ProductComponent {
     // console.warn(this.productForm.get('categories'))
   }
 
-
   onSave() {
-    console.warn(this.productForm)
+    console.warn(this.productForm, this.productForm.value)
+  }
+  
+  patch() {
+    this.productForm.patchValue(this.itemRepo.getItemById(1))
+
   }
 
   toggleLock() {

@@ -2,14 +2,15 @@
     <label [for]="label" *ngIf="label" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white select-none">
         {{ label }}
     </label>
-    <select 
-        [formControl]="controlName" 
-        [id]="label" 
+    <select
+        [formControl]="controlName"
+        [id]="label"
         [enableDisable]="prev ? !controlName.parent?.value[prev] : false"
-        (ngModelChange)="resetChildren(); actionBtnClicked()"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus-visible:outline-none">
+        (ngModelChange)="resetChildren()"
+        [compareWith]="compareFn"
+        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus-visible:outline-none">
         <option [ngValue]="null" selected disabled>{{ placeholder }}</option>
-        <option [ngValue]="null">{{ placeholder }}</option>
+        <div>btn</div>
         <ng-container *ngIf="filter">
             <ng-container *ngFor="let item of data | filterByParentId: controlName.parent?.value[prev]?.id">
                 <option [ngValue]="item">{{ item[field] }}</option>
@@ -18,7 +19,7 @@
         <ng-container *ngIf="!filter">
             <ng-container *ngFor="let item of data">
                 <option [ngValue]="item">{{ item[field] }}</option>
-            </ng-container>    
+            </ng-container>
         </ng-container>
     </select>
 </form>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { InventoryService } from './inventory.service';
-import { InventoryRepository } from './inventory.repository';
+import { InventoryRepository } from './+state/inventory.repository';
+import { ItemRepository } from './+state/item.repository';
 
 @Component({
   selector: 'app-inventory',
@@ -8,8 +9,13 @@ import { InventoryRepository } from './inventory.repository';
   styleUrls: ['./inventory.component.scss']
 })
 export class InventoryComponent {
-  constructor(private inventoryService: InventoryService, public inventoryRepo: InventoryRepository) {
+  constructor(
+    private inventoryService: InventoryService, 
+    public inventoryRepo: InventoryRepository,
+    public itemRepo: ItemRepository) {
     // this.inventoryService.getProducts().subscribe()
     this.inventoryRepo.fetchData().subscribe()
+    this.itemRepo.fetchData().subscribe()
+
   }
 }

@@ -11,4 +11,8 @@ export class InventoryService {
   getProducts() {
     return this.http.get('../../../../../assets/mock/categoryData.json')
   }
+
+  getItems() {
+    return this.http.get('../../../../../assets/mock/itemData.json')
+  }
 }

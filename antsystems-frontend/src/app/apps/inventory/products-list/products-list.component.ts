@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { GuiColumn, GuiSorting } from '@generic-ui/ngx-grid';
 import { ProductListService } from './product-list.service';
+import { Router } from '@angular/router';
+import { ItemRepository } from '../+state/item.repository';
 
 @Component({
   selector: 'app-products-list',
@@ -8,72 +10,97 @@ import { ProductListService } from './product-list.service';
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent {
-  source: Array<any> = [
-    {
-      name: 'Brad',
-      job: 'programmer',
-      age: '40',
-      address: {
-        street: 'test street'
-      }
-    }
-  ];
+
+  source: Array<any> = []
 
   columns: Array<GuiColumn> = [
     {
       header: 'Item',
-      field: 'name'
+      field: 'item'
     },
     {
       header: 'SKU',
-      field: 'job'
+      field: 'sku'
     },
     {
       header: 'Description',
-      field: 'age'
+      field: 'description'
     },
     {
       header: 'Master Case',
-      field: 'address',
-      formatter: (data: any) => data.street
+      field: 'unitDetails',
+      formatter: (data: any) => data.masterCase
     },
     {
       header: 'Inner',
-      field: 'job'
+      field: 'unitDetails',
+      formatter: (data: any) => data.innerBox
     },
     {
       header: 'Pack',
-      field: 'age'
+      field: 'unitDetails',
+      formatter: (data: any) => data.pack
     },
     {
       header: 'Pcs',
-      field: 'name'
+      field: 'unitDetails',
+      formatter: (data: any) => data.pieces
     },
-    {
-      header: 'On-Hand',
-      field: 'job'
-    },
-    {
-      header: 'In storage',
-      field: 'age'
-    },
-    {
-      header: 'Multi-Warehouse',
-      field: 'name'
-    },
-    {
-      header: 'Status',
-      field: 'job'
-    }
+    // {
+    //   header: 'On-Hand',
+    //   field: 'job'
+    // },
+    // {
+    //   header: 'In storage',
+    //   field: 'age'
+    // },
+    // {
+    //   header: 'Multi-Warehouse',
+    //   field: 'name'
+    // },
+    // {
+    //   header: 'Status',
+    //   field: 'job'
+    // }
   ];
 
   sorting: GuiSorting = {
     enabled: true
 };
 
-  constructor(public productListService: ProductListService) {
-    this.productListService.getProducts().subscribe((res) => {
-      console.warn(res)
+  constructor(
+    public productListService: ProductListService, 
+    private router: Router,
+    public itemRepo: ItemRepository) {
+    // this.productListService.getProducts().subscribe((res) => {
+    //   console.warn(res)
+    // })
+    this.itemRepo.items$.subscribe((res) => {
+      this.source = res
     })
+
+    // this.source =   [
+    //   {
+    //     name: 'Brad',
+    //     job: 'programmer',
+    //     age: '40',
+    //     address: {
+    //       street: 'test street'
+    //     }
+    //   },
+    //   {
+    //     name: 'Ted',
+    //     job: 'programmer',
+    //     age: '41',
+    //     address: {
+    //       street: 'test street'
+    //     }
+    //   }
+    // ];
+  }
+
+  navTo(item: any) {
+    console.warn(item)
+    this.router.navigateByUrl(`/apps/inventory/products/product/${item[0].sku}`)
   }
 }

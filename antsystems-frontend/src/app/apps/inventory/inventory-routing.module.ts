@@ -34,6 +34,10 @@ const routes: Routes = [
                     {
                         path: 'product',
                         component: ProductComponent
+                    },
+                    {
+                        path: 'product/:sku',
+                        component: ProductComponent
                     }
                 ]
             },

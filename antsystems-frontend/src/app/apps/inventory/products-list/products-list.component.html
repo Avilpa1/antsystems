@@ -6,7 +6,10 @@
             [columns]="columns" 
             [sorting]="sorting"
             [verticalGrid]="false"
-            [horizontalGrid]="true">
+            [horizontalGrid]="true"
+            (itemsSelected)="navTo($event)">
         </gui-grid>
     </div>
 </div>
+
+<button routerLink="/apps/inventory/products/product/EP90BP-4">test</button>

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@generic-ui/fabric": "^0.21.0",
+    "@generic-ui/hermes": "^0.21.0",
+    "@generic-ui/ngx-grid": "^0.21.0"
+  }
+}

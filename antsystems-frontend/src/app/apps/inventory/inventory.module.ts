@@ -13,7 +13,7 @@ import { ProductReportsComponent } from './product-reports/product-reports.compo
 import { SettingsComponent } from './settings/settings.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProductComponent } from './products/product/product.component';
-import { InventoryRepository } from './inventory.repository';
+import { InventoryRepository } from './+state/inventory.repository';
 import { CreateSkuComponent } from './modal/create-sku/create-sku.component';
 
 
