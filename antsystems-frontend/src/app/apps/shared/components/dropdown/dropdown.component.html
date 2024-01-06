@@ -9,7 +9,7 @@
         autocomplete="off"
         (blur)="hideOptions()">
     <div *ngIf="show | async"
-        class="absolute z-50 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full focus-visible:outline-none flex flex-col text-center">
+        class="absolute z-50 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg w-full focus-visible:outline-none flex flex-col text-center">
         <span 
             *ngFor="let action of actionBtnConfig" 
             class="cursor-pointer py-1 text-blue-500 text-sm select-none hover:bg-blue-500 w-full hover:text-white"

@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { createStore } from '@ngneat/elf';
-import { selectAllEntities, setEntities, withEntities, getEntity, getEntityByPredicate } from '@ngneat/elf-entities';
+import { selectAllEntities, setEntities, withEntities, getEntity, getEntityByPredicate, upsertEntities } from '@ngneat/elf-entities';
 import {
   createRequestsCacheOperator,
   updateRequestCache,
@@ -8,10 +8,11 @@ import {
 } from '@ngneat/elf-requests';
 import { tap } from 'rxjs/operators';
 import { InventoryService } from '../inventory.service';
+import { Item } from '../products/item/item.models';
 
 const itemsStore = createStore(
   { name: 'items' },
-  withEntities<any>(),
+  withEntities<Item>(),
   withRequestsCache<'items'>()
 );
 
@@ -26,12 +27,21 @@ export class ItemRepository {
     itemsStore.update(updateRequestCache('items'), setEntities(item));
   }
 
-  getItemById(id: number) {
+  add(item: Item) {
+    itemsStore.update(upsertEntities(item))
+  }
+
+  getById(id: number) {
     return itemsStore.query(getEntity(id));
   }
 
-  getItemBySku(sku: string) {
-    return itemsStore.query(getEntityByPredicate((item) => item.sku == sku)
+  getBySku(sku: string) {
+    return itemsStore.query(getEntityByPredicate((res) => res.sku == sku)
+    );
+  }
+
+  getByItem(item: string) {
+    return itemsStore.query(getEntityByPredicate((res) => res.item == item)
     );
   }
 

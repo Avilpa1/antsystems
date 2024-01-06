@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Categories, Product } from './products.models';
+import { Categories, Item } from './item.models';
 import { Observable, Subject, of } from 'rxjs'
 import { InventoryRepository } from '../../+state/inventory.repository';
 import { ModalService } from 'src/app/apps/shared/components/modal/modal.service';
@@ -9,13 +9,13 @@ import { ItemRepository } from '../../+state/item.repository';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss'],
+  selector: 'app-item',
+  templateUrl: './item.component.html',
+  styleUrls: ['./item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
-export class ProductComponent {
+export class ItemComponent {
   productForm!: FormGroup;
   canEditItem: boolean = true;
   public categoriesData: Observable<Categories> = new Observable()
@@ -34,10 +34,11 @@ export class ProductComponent {
     if (this.itemData) {
       this.canEditItem = false
     }
-    const sku = this.route.snapshot.params['sku'];  
-    if (sku) {
+    const itemFromRoute = this.route.snapshot.params['item'];  
+    if (itemFromRoute) {
       this.itemRepo.items$.subscribe(() => {
-        this.productForm.patchValue(this.itemRepo.getItemBySku(sku))
+        const item = this.itemRepo.getBySku(itemFromRoute)!;
+        this.productForm.patchValue(item);
         this.canEditItem = false;
         this.productForm.disable();
       })
@@ -113,17 +114,19 @@ export class ProductComponent {
   }
 
   resetChildren(controlName: string) {
-    const control = this.productForm.get(controlName)
-    control?.reset()
+    const control = this.productForm.get(controlName);
+    control?.reset();
     // console.warn(this.productForm.get('categories'))
   }
 
   onSave() {
-    console.warn(this.productForm, this.productForm.value)
+    console.warn(this.productForm, this.productForm.value);
+    this.itemRepo.add(this.productForm.value);
   }
   
   patch() {
-    this.productForm.patchValue(this.itemRepo.getItemById(1))
+    const item = this.itemRepo.getById(1)!;
+    this.productForm.patchValue(item);
 
   }
 
@@ -138,8 +141,13 @@ export class ProductComponent {
   }
 
   openModalCreateNewSku() {
-    console.warn('fired')
     this.modal.open(CreateSkuComponent, {name: 'Note', width: '35rem'});
   }
 
+  selectItemFromDropdown(itemNumber: string) {
+    const item = this.itemRepo.getByItem(itemNumber)!;
+    this.productForm.patchValue(item);
+    this.canEditItem = false;
+    this.productForm.disable();
+  }
 }

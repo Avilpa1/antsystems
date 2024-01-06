@@ -101,6 +101,6 @@ export class ProductsListComponent {
 
   navTo(item: any) {
     console.warn(item)
-    this.router.navigateByUrl(`/apps/inventory/products/product/${item[0].sku}`)
+    this.router.navigateByUrl(`/apps/inventory/products/item/${item[0].item}`)
   }
 }

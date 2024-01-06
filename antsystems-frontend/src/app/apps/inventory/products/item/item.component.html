@@ -27,6 +27,7 @@
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Item</label>
                                 <ant-dropdown
                                     [control]="productForm.get('item')" 
+                                    (selectedItemEvent)="selectItemFromDropdown($event)"
                                     (actionBtnEvent)="openModalCreateNewSku()">
                                 </ant-dropdown>
                         </div>

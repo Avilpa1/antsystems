@@ -12,7 +12,7 @@ import { RmaComponent } from './rma/rma.component';
 import { ProductReportsComponent } from './product-reports/product-reports.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SharedModule } from '../shared/shared.module';
-import { ProductComponent } from './products/product/product.component';
+import { ItemComponent } from './products/item/item.component';
 import { InventoryRepository } from './+state/inventory.repository';
 import { CreateSkuComponent } from './modal/create-sku/create-sku.component';
 
@@ -30,7 +30,7 @@ import { CreateSkuComponent } from './modal/create-sku/create-sku.component';
     RmaComponent,
     ProductReportsComponent,
     SettingsComponent,
-    ProductComponent,
+    ItemComponent,
     CreateSkuComponent
   ],
   imports: [

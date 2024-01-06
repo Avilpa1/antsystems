@@ -1,4 +1,4 @@
-export interface Product {
+export interface Item {
     unitDetails:       UnitDetails;
     marketplace:       Marketplace;
     priceDetails:      PriceDetails;
@@ -8,8 +8,11 @@ export interface Product {
     barcode:           Barcode;
     locations:         Locations;
     expirationDetails: ExpirationDetails;
+    sku: string;
+    item: string;
+    description: string;
     _id: string;
-    id: string;
+    id: number;
 }
 
 export interface Barcode {
