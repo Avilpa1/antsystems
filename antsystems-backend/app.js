@@ -6,7 +6,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser')
 
-const productRouter = require('./routes/product')
+const itemRouter = require('./routes/items')
 const categoriesRouter = require('./routes/categories')
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -22,7 +22,7 @@ db.on('error', error => { console.log(error) })
 db.once('open', () => { console.log('Connected to AntsystemsDB') })
 
 // Routes
-app.use('/product', productRouter)
+app.use('/items', itemRouter)
 app.use('/categories', categoriesRouter)
 
 

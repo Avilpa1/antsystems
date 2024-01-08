@@ -8,7 +8,7 @@
         (click)="show.next(true)"
         autocomplete="off"
         (blur)="hideOptions()">
-    <div *ngIf="show | async"
+    <div *ngIf="(show | async) && options"
         class="absolute z-50 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg w-full focus-visible:outline-none flex flex-col text-center">
         <span 
             *ngFor="let action of actionBtnConfig" 
@@ -16,7 +16,7 @@
             (click)="actionBtnClicked(action.name)">
             {{ action.name }} +
         </span>
-        <ng-container *ngFor="let option of optionsData | textFilter:control.value:['name']; let i=index">
+        <ng-container *ngFor="let option of options | textFilter:control.value:['name']; let i=index">
             <span *ngIf="i < 5"
                 class="cursor-pointer py-1 text-sm hover:bg-blue-500 w-full hover:text-white select-none"
                 (click)="selectOption(option.name)">

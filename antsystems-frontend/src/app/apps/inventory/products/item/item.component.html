@@ -27,6 +27,7 @@
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Item</label>
                                 <ant-dropdown
                                     [control]="productForm.get('item')" 
+                                    [options]="(itemRepo.itemsItem$ | async)"
                                     (selectedItemEvent)="selectItemFromDropdown($event)"
                                     (actionBtnEvent)="openModalCreateNewSku()">
                                 </ant-dropdown>
@@ -35,7 +36,8 @@
                             <label for="first_name"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">SKU</label>
                                 <ant-dropdown
-                                    [control]="productForm.get('sku')" 
+                                    [control]="productForm.get('sku')"
+                                    [options]="(itemRepo.itemsSku$ | async)"
                                     [actionBtnConfig]="actionBtnConfig" 
                                     (actionBtnEvent)="openModalCreateNewSku()">
                                 </ant-dropdown>

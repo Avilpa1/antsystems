@@ -7,6 +7,7 @@ import { ModalService } from 'src/app/apps/shared/components/modal/modal.service
 import { CreateSkuComponent } from '../../modal/create-sku/create-sku.component';
 import { ItemRepository } from '../../+state/item.repository';
 import { ActivatedRoute } from '@angular/router';
+import { ItemService } from './item.service';
 
 @Component({
   selector: 'app-item',
@@ -29,7 +30,8 @@ export class ItemComponent {
     public inventoryRepo: InventoryRepository,
     public itemRepo: ItemRepository,  
     public modal: ModalService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private itemService: ItemService) {
     this.initForm()
     if (this.itemData) {
       this.canEditItem = false
@@ -125,9 +127,11 @@ export class ItemComponent {
   }
   
   patch() {
-    const item = this.itemRepo.getById(1)!;
-    this.productForm.patchValue(item);
-
+    // const item = this.itemRepo.getById(1)!;
+    // this.productForm.patchValue(item);
+    // this.itemService.getItems().subscribe()
+    // this.itemService.addItem(this.productForm.value).subscribe()
+    this.itemRepo.add(this.productForm.value).subscribe();
   }
 
   toggleLock() {
