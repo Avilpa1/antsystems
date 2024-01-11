@@ -8,6 +8,7 @@ import { CreateSkuComponent } from '../../modal/create-sku/create-sku.component'
 import { ItemRepository } from '../../+state/item.repository';
 import { ActivatedRoute } from '@angular/router';
 import { ItemService } from './item.service';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-item',
@@ -21,17 +22,32 @@ export class ItemComponent {
   canEditItem: boolean = true;
   public categoriesData: Observable<Categories> = new Observable()
   itemData: any = null;
+  modalRef: MdbModalRef<CreateSkuComponent> | null = null;
 
   actionBtnConfig = [{
     name: "New SKU"
   }]
+
+  modalConfig = {
+    animation: true,
+    backdrop: true,
+    containerClass: 'right',
+    data: {
+      title: 'Custom title'
+    },
+    ignoreBackdropClick: false,
+    keyboard: true,
+    modalClass: 'modal-dialog-centered',
+    // nonInvasive: true,
+  }
 
   constructor(
     public inventoryRepo: InventoryRepository,
     public itemRepo: ItemRepository,  
     public modal: ModalService,
     private route: ActivatedRoute,
-    private itemService: ItemService) {
+    private itemService: ItemService,
+    private modalService: MdbModalService) {
     this.initForm()
     if (this.itemData) {
       this.canEditItem = false
@@ -75,13 +91,13 @@ export class ItemComponent {
         }),
         categories: new FormGroup({
           category: new FormControl(null, [Validators.required]),
-          subCategory: new FormControl({value: null, disabled: true}, [Validators.required]),
-          productType: new FormControl({value: null, disabled: true}, [Validators.required]),
-          subProductType: new FormControl({value: null, disabled: true}, [Validators.required]),
+          subCategory: new FormControl({value: null, disabled: false}, [Validators.required]),
+          productType: new FormControl({value: null, disabled: false}, [Validators.required]),
+          subProductType: new FormControl({value: null, disabled: false}, [Validators.required]),
         }),
         brandName: new FormGroup({
-          brandName: new FormControl({value: null, disabled: true}, [Validators.required]),
-          subBrand: new FormControl({value: null, disabled: true}, [Validators.required]),
+          brandName: new FormControl({value: null, disabled: false}, [Validators.required]),
+          subBrand: new FormControl({value: null, disabled: false}, [Validators.required]),
         }),
         measuringDetails: new FormGroup({
           lengthWidthHeight: new FormControl('', [Validators.required]),
@@ -99,7 +115,7 @@ export class ItemComponent {
         }),
         locations: new FormGroup({
           warehouseLocation: new FormControl(null, [Validators.required]),
-          binLocation: new FormControl({value: null, disabled: true}, [Validators.required]),
+          binLocation: new FormControl({value: null, disabled: false}, [Validators.required]),
         }),
         expirationDetails: new FormGroup({
           manufactureDate: new FormControl('', [Validators.required]),
@@ -131,7 +147,8 @@ export class ItemComponent {
     // this.productForm.patchValue(item);
     // this.itemService.getItems().subscribe()
     // this.itemService.addItem(this.productForm.value).subscribe()
-    this.itemRepo.add(this.productForm.value).subscribe();
+    // this.itemRepo.add(this.productForm.value).subscribe();
+    console.warn(this.productForm, this.productForm.value);
   }
 
   toggleLock() {
@@ -145,7 +162,8 @@ export class ItemComponent {
   }
 
   openModalCreateNewSku() {
-    this.modal.open(CreateSkuComponent, {name: 'Note', width: '35rem'});
+    // this.modal.open(CreateSkuComponent, {name: 'Note', width: '35rem'});
+    this.modalRef = this.modalService.open(CreateSkuComponent, this.modalConfig)
   }
 
   selectItemFromDropdown(itemNumber: string) {
@@ -153,5 +171,9 @@ export class ItemComponent {
     this.productForm.patchValue(item);
     this.canEditItem = false;
     this.productForm.disable();
+  }
+
+  valueChangedAlert(event: Event) {
+    this.modal.open(CreateSkuComponent, {name: 'Note', width: '35rem'});
   }
 }

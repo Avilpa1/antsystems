@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -19,8 +19,14 @@ export class SelectComponent {
   @Input() placeholder = 'Please Select'
   @Input() field: string = 'name';
   @Input() label: string | null = null;
-
+  @Output() selectChangedEvent = new EventEmitter();
+  
   constructor() {}
+
+  selectChanged(event: Event) {
+    this.selectChangedEvent.next(event);
+    this.resetChildren();
+  }
 
   resetChildren() {
     const control = this.groupName.get(`${this.subGroupName}.${this.next}`)

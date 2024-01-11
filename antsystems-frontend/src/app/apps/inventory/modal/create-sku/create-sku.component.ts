@@ -1,10 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 
 @Component({
     selector: 'app-create-sku',
-    template: `<p>create-sku works!</p>`,
+    templateUrl: './create-sku.component.html',
     styleUrls: ['./create-sku.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CreateSkuComponent { }
+export class CreateSkuComponent {
+    @Input() skuData: string = "no data";
+    
+    // constructor(public modalRef: MdbModalRef<CreateSkuComponent>) {}
+    
+}

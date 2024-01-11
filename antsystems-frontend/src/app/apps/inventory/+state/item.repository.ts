@@ -52,7 +52,6 @@ export class ItemRepository {
 
   fetchData() {
     return this.itemService.getItems().pipe(
-      tap((d: any) => console.warn(d)),
       map((x: any) => x.map((val: any) => ({...val, id: val._id}) )),
       tap(this.setItems), 
       this.skipWhileTodosCached('items'))

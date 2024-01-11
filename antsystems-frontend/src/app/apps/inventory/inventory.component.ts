@@ -10,12 +10,9 @@ import { ItemRepository } from './+state/item.repository';
 })
 export class InventoryComponent {
   constructor(
-    private inventoryService: InventoryService, 
     public inventoryRepo: InventoryRepository,
     public itemRepo: ItemRepository) {
-    // this.inventoryService.getProducts().subscribe()
-    this.inventoryRepo.fetchData().subscribe()
-    this.itemRepo.fetchData().subscribe()
-
+      this.inventoryRepo.fetchData().subscribe()
+      this.itemRepo.fetchData().subscribe()
   }
 }

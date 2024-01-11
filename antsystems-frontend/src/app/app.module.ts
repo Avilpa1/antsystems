@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { ShellModule } from './shell/shell.module';
 import { SharedModule } from './apps/shared/shared.module';
 import { HttpClientModule } from  '@angular/common/http';
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from  '@angular/common/http';
     AppRoutingModule,
     ShellModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    MdbModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

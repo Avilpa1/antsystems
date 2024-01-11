@@ -178,6 +178,7 @@
                                 [controlName]="productForm.get('categories.category')"
                                 next="subCategory"
                                 placeholder="Category"
+                                (selectChangedEvent)="valueChangedAlert($event)"
                             ></ant-select>
                         </div>
                         <div class="w-1/6">
