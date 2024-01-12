@@ -178,7 +178,7 @@
                                 [controlName]="productForm.get('categories.category')"
                                 next="subCategory"
                                 placeholder="Category"
-                                (selectChangedEvent)="valueChangedAlert($event)"
+                                [valueChangedAlert]="true"
                             ></ant-select>
                         </div>
                         <div class="w-1/6">
@@ -192,6 +192,7 @@
                                 next="productType"
                                 [filter]="true"
                                 placeholder="Sub Category"
+                                [valueChangedAlert]="true"
                             ></ant-select>
                         </div>
                         <div class="w-1/6">
@@ -205,6 +206,7 @@
                                 next="subProductType"
                                 [filter]="true"
                                 placeholder="Product Type"
+                                [valueChangedAlert]="true"
                             ></ant-select>
                         </div>
                         <div class="w-1/6">
@@ -236,6 +238,7 @@
                                 [controlName]="productForm.get('brandName.brandName')"
                                 next="subBrand"
                                 placeholder="Brand Name"
+                                [valueChangedAlert]="true"
                             ></ant-select>
                         </div>
                         <div class="w-1/6">
@@ -363,6 +366,7 @@
                                 [controlName]="productForm.get('locations.warehouseLocation')"
                                 next="binLocation"
                                 placeholder="Warehouse Location"
+                                [valueChangedAlert]="true"
                             ></ant-select>
                         </div>
                         <div class="w-1/6">

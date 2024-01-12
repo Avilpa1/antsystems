@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="close(false)"
+  ></button>
+</div>
+<div class="modal-body">
+  <div>Warning!</div>
+  <div>You are changing a value that will reset any child values and cause data loss. Please confirm before making this change.</div>
+  <div class="flex justify-center mt-4 mb-2 font-semibold">
+    <span>{{ prev?.name }} > {{ new?.name }}</span>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="close(false)">
+    Close
+  </button>
+  <button type="button" class="btn btn-primary" (click)="confirm(true)">Confirm changes</button>
+</div>
