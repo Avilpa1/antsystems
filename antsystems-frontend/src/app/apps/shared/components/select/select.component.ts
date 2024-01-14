@@ -45,26 +45,29 @@ export class SelectComponent implements AfterContentInit {
   ngAfterContentInit(): void {
     this.prevValue = this.controlName.value;
   }
-
+  skip: boolean = false;
   selectChanged(event: Event) {
-    console.warn(this.prevValue, this.controlName.value)
     if (this.valueChangedAlert && this.prevValue != null && this.prevValue !== this.controlName.value) {
       if(this.controlName.value) {
+      // fires if there is an exisiting value set
         this.modalConfig.data.prev = this.prevValue;
         this.modalConfig.data.new = this.controlName.value;
         this.modalRef = this.modalService.open(SelectValueChangedComponent, this.modalConfig);
         this.modalRef.onClose.subscribe((value: any) => {
-          console.warn(value)
           if (value) {
             // Confirm
+            this.skip = false;
             this.setValue(event)
           } else {
             // Cancel
+            this.skip = true;
             this.controlName.setValue(this.prevValue, {emitEvent: false, onlySelf: true})
+            // this.prevValue = null
           }
         });        
       } else {
-        // this.prevValue = null;
+      // fires if no value is set
+        this.prevValue = null;
         this.resetChildren();
       }
     } else {
@@ -74,12 +77,12 @@ export class SelectComponent implements AfterContentInit {
   }
 
   setValue(event: Event) {
-    console.warn('fired setValue')
     this.selectChangedEvent.next(event);
     this.resetChildren();
   }
 
   resetChildren() {
+    if(this.skip) return
     const control = this.groupName.get(`${this.subGroupName}.${this.next}`)
     control?.reset()
   }
