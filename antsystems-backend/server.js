@@ -14,6 +14,7 @@ app.use(bodyParser.json())
 
 // Mongoose 
 const mongoose = require("mongoose");
+mongoose.set('strictQuery', true);
 mongoose.connect('mongodb+srv://antsystems_dev:4SQ9iaBd3NjlkLo5@cluster0.lgg6esd.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true
 })
@@ -31,4 +32,6 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(3000)
+app.listen(3000, (req,res) => {
+  console.log('Server Running');
+  });
