@@ -2,9 +2,10 @@
   "name": "antsystems-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "backend": "nodemon server.js"
+    "backend": "nodemon server.js",
+    "start": "server.js"
   },
   "keywords": [],
   "author": "",
