@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { devTools } from '@ngneat/elf-devtools';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,6 @@ export class AppComponent {
   title = 'antsystems-frontend';
   constructor() {
     devTools();
+    console.log(environment.production)
   }
 }

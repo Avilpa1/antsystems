@@ -78,25 +78,6 @@ export class ProductsListComponent {
     this.itemRepo.items$.subscribe((res) => {
       this.source = res
     })
-
-    // this.source =   [
-    //   {
-    //     name: 'Brad',
-    //     job: 'programmer',
-    //     age: '40',
-    //     address: {
-    //       street: 'test street'
-    //     }
-    //   },
-    //   {
-    //     name: 'Ted',
-    //     job: 'programmer',
-    //     age: '41',
-    //     address: {
-    //       street: 'test street'
-    //     }
-    //   }
-    // ];
   }
 
   navTo(item: any) {
