@@ -16,6 +16,7 @@ export class DropdownComponent {
   @Input() text!: string;
   @Input() items!: string;
   @Input() options!: any;
+  @Input() placeHolder!: any;
   @Input() actionBtnConfig!: actionBtn[];
   @Output() actionBtnEvent = new EventEmitter();
   @Output() selectedItemEvent = new EventEmitter();
