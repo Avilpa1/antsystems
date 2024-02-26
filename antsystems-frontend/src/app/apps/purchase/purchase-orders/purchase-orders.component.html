@@ -1,0 +1,10 @@
+<div class="product-container">
+    <div class="header flex justify-center items-center text-white font-semibold">Purchase Orders</div>
+    <div class="content">
+        <div class="flex">
+            <button [routerLink]="['orders']" class="px-2 mx-2 nav-item" routerLinkActive="nav-item-active">Orders</button>
+            <button [routerLink]="['new-order']" class="px-2 mx-2 nav-item" routerLinkActive="nav-item-active">New PO</button>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -26,6 +26,7 @@
                             <label for="first_name"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Item</label>
                                 <ant-dropdown
+                                    placeHolder="Item"
                                     [control]="productForm.get('item')" 
                                     [options]="(itemRepo.itemsItem$ | async)"
                                     (selectedItemEvent)="selectItemFromDropdown($event)"
@@ -36,6 +37,7 @@
                             <label for="first_name"
                                 class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">SKU</label>
                                 <ant-dropdown
+                                    placeHolder="SKU"
                                     [control]="productForm.get('sku')"
                                     [options]="(itemRepo.itemsSku$ | async)"
                                     [actionBtnConfig]="actionBtnConfig" 

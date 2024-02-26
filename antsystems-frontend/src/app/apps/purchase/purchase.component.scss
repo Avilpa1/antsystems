@@ -1,0 +1,17 @@
+.nav-item-active {
+    color: #536A84;
+    border-bottom: #536A84 solid 4px;
+    font-weight: 700;
+    background-color: transparent !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.nav-item {
+    color: #6a89b0bf;
+    border-radius: 8px;
+    transition: background-color 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+:hover.nav-item {
+    background-color: #a5a5a51a;
+}

@@ -10,7 +10,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ModalFactoryComponent } from './components/modal/modal-factory/modal-factory.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { TextFilterPipe } from './pipes/filterByKeyword.pipe';
-
+import { AntTextComponent } from './components/text/text.component';
 @NgModule({
   declarations: [
     StatusCardComponent,
@@ -20,7 +20,8 @@ import { TextFilterPipe } from './pipes/filterByKeyword.pipe';
     ModalComponent,
     ModalFactoryComponent,
     DropdownComponent,
-    TextFilterPipe
+    TextFilterPipe,
+    AntTextComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +40,8 @@ import { TextFilterPipe } from './pipes/filterByKeyword.pipe';
     ModalComponent,
     ModalFactoryComponent,
     DropdownComponent,
-    TextFilterPipe
+    TextFilterPipe,
+    AntTextComponent
   ]
 })
 export class SharedModule { }
