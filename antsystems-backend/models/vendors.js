@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const vendorsSchema = new mongoose.Schema({
     id: { type: Number },
-    vendorId: { type: string },
-    accountNumber: {type: string},
+    vendorId: { type: String },
+    accountNumber: {type: String},
     netPayment: { type: String },
     address: { type: String },
     companyName: { type: String },

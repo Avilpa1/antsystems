@@ -3,10 +3,10 @@ const mongoose = require('mongoose')
 const carrierSchema = new mongoose.Schema({
     id: { type: Number },
     carrierId: {
-      type: string
+      type: String
     },
     serviceType: {
-      type: string
+      type: String
     },
     email: {
       type: String
