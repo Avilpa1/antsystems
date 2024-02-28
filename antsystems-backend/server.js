@@ -8,6 +8,9 @@ const bodyParser = require('body-parser')
 
 const itemRouter = require('./routes/items')
 const categoriesRouter = require('./routes/categories')
+const vendorRouter = require('./routes/vendors')
+const carriersRouter = require('./routes/carriers')
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -25,7 +28,8 @@ db.once('open', () => { console.log('Connected to AntsystemsDB') })
 // Routes
 app.use('/items', itemRouter)
 app.use('/categories', categoriesRouter)
-
+app.use('/vendors', vendorRouter)
+app.use('/carriers', carriersRouter)
 
 app.get('/', (req, res) => {
   res.json({test: 'test'})
