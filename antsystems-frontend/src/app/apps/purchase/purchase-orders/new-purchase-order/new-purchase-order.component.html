@@ -76,16 +76,18 @@
                     class="block text-xxs font-medium text-gray-900 dark:text-white">Date</label>
                 <input 
                 formControlName="date"
+                placeholder=""
                 class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 disabled:opacity-70"
-                type="date" name="" id="">
+                type="date" name="" id="" required>
             </div>
             <div class="mt-3">
                 <label for="master_case"
                     class="block text-xxs font-medium text-gray-900 dark:text-white">ETA Date</label>
                     <input 
                     formControlName="etaDate"
+                    placeholder=""
                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 disabled:opacity-70"
-                    type="date" name="" id="">
+                    type="date" name="" id="" required>
             </div>
             <div class="mt-3">
                 <label for="master_case"
@@ -101,7 +103,7 @@
     <gui-grid 
         [source]="source" 
         [columns]="columns" 
-        [sorting]="sorting"
+        [sorting]="sorting" 
         [verticalGrid]="false"
         [horizontalGrid]="true">
     </gui-grid>

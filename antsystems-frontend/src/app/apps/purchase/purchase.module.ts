@@ -7,8 +7,9 @@ import { PurchaseOrdersComponent } from './purchase-orders/purchase-orders.compo
 import { NewPurchaseOrderComponent } from './purchase-orders/new-purchase-order/new-purchase-order.component';
 import { PurchaseOrderListComponent } from './purchase-orders/purchase-order-list/purchase-order-list.component';
 import { SharedModule } from '../shared/shared.module';
-
-
+import { CarriersComponent } from './carriers/carriers.component';
+import { AddCarrierComponent } from './carriers/add-carrier/add-carrier.component';
+import { AddVendorComponent } from './vendors/add-vendor/add-vendor.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,10 @@ import { SharedModule } from '../shared/shared.module';
     VendorsComponent,
     PurchaseOrdersComponent,
     NewPurchaseOrderComponent,
-    PurchaseOrderListComponent
+    PurchaseOrderListComponent,
+    CarriersComponent,
+    AddCarrierComponent,
+    AddVendorComponent
   ],
   imports: [
     CommonModule,

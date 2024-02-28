@@ -1,0 +1,59 @@
+<div class="p-4">
+    <h5>Create a Carrier</h5>
+    <hr class="border-2 border-black m-0">
+    <form [formGroup]="form">
+        <div class="flex gap-4">
+            <div class="w-full">
+                <div class="mt-3 w-full">
+                    <label for="carrier_id"
+                        class="block text-xxs font-medium text-gray-900 dark:text-white">Carrier ID</label>
+                    <input formControlName="carrierId" type="text" id="carrier_id"
+                        class="ant-input"
+                        placeholder="">
+                </div>
+                <div class="mt-3">
+                    <label for="service_type"
+                        class="block text-xxs font-medium text-gray-900 dark:text-white">Type of Service</label>
+                    <input formControlName="serviceType" type="text" id="service_type"
+                        class="ant-input"
+                        placeholder="">
+                </div>
+                <div class="mt-3">
+                    <label for="email"
+                        class="block text-xxs font-medium text-gray-900 dark:text-white">Email</label>
+                    <input formControlName="email" type="email" id="email"
+                        class="ant-input"
+                        placeholder="">
+                </div>
+            </div>
+            <div class="w-full">
+                <div class="mt-3">
+                    <label for="company_name"
+                        class="block text-xxs font-medium text-gray-900 dark:text-white">Company Name</label>
+                    <input formControlName="companyName" type="text" id="company_name"
+                        class="ant-input"
+                        placeholder="">
+                </div>
+                <div class="mt-3">
+                    <label for="contact_name"
+                        class="block text-xxs font-medium text-gray-900 dark:text-white">Contact Name</label>
+                    <input formControlName="contactName" type="text" id="contact_name"
+                        class="ant-input"
+                        placeholder="">
+                </div>
+                <div class="mt-3">
+                    <label for="phone"
+                        class="block text-xxs font-medium text-gray-900 dark:text-white">Phone</label>
+                    <input formControlName="phone" type="phone" id="phone"
+                        class="ant-input"
+                        placeholder="">
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr class="border-2 border-black mt-8">
+    <div class="flex gap-2 justify-end">
+        <button class="btn-cancel" (click)="close(false)">Cancel</button>
+        <button class="btn-primary" (click)="save()" [disabled]="!form.valid" [ngClass]="!form.valid ? 'btn-disabled' : ''">Save</button>
+    </div>
+</div>

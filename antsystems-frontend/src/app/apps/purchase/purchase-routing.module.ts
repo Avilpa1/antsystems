@@ -5,6 +5,7 @@ import { VendorsComponent } from './vendors/vendors.component';
 import { PurchaseOrdersComponent } from './purchase-orders/purchase-orders.component';
 import { PurchaseOrderListComponent } from './purchase-orders/purchase-order-list/purchase-order-list.component';
 import { NewPurchaseOrderComponent } from './purchase-orders/new-purchase-order/new-purchase-order.component';
+import { CarriersComponent } from './carriers/carriers.component';
 
 
 const routes: Routes = [
@@ -14,12 +15,31 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'vendors',
+                redirectTo: 'purchase-orders',
                 pathMatch: 'full'
             },
             {
                 path: 'vendors',
                 component: VendorsComponent,
+                children: [
+                    // {
+                    //     path: '',
+                    //     redirectTo: 'item',
+                    //     pathMatch: 'full'
+                    // },
+                    // {
+                    //     path: 'item',
+                    //     component: ItemComponent
+                    // },
+                    // {
+                    //     path: 'item/:item',
+                    //     component: ItemComponent
+                    // }
+                ]
+            },
+            {
+                path: 'carriers',
+                component: CarriersComponent,
                 children: [
                     // {
                     //     path: '',
