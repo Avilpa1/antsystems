@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../models/carriers')
+const Carriers = require('../models/carriers')
 
 // Get
 router.get('/', async (req, res) => {
     try {
-        const db = await db.find({})
-        res.json(db)
+        const carrier = await Carriers.find({})
+        res.json(carrier)
     } catch {
         
     }
@@ -15,11 +15,11 @@ router.get('/', async (req, res) => {
 // Create
 router.post('/', async (req, res) => {
     console.log(req.body)
-    const db = new db(req.body)
+    const carrier = new Carriers(req.body)
     try {
-        const db = await db.save()
-        console.log(db)
-        res.json(db).sendStatus(200)
+        const newItem = await carrier.save()
+        console.log(newItem)
+        res.json(newItem) //.sendStatus(200)
     } catch (err) {
         console.log('Error', err)
         res.sendStatus(500)

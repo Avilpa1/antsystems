@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../models/vendors')
+const DB = require('../models/vendors')
 
 // Get
 router.get('/', async (req, res) => {
     try {
-        const db = await db.find({})
+        const db = await DB.find({})
         res.json(db)
     } catch {
         
@@ -15,11 +15,11 @@ router.get('/', async (req, res) => {
 // Create
 router.post('/', async (req, res) => {
     console.log(req.body)
-    const db = new db(req.body)
+    const db = new DB(req.body)
     try {
-        const db = await db.save()
-        console.log(db)
-        res.json(db).sendStatus(200)
+        const newItem = await db.save()
+        console.log(newItem)
+        res.json(newItem)//.sendStatus(200)
     } catch (err) {
         console.log('Error', err)
         res.sendStatus(500)
