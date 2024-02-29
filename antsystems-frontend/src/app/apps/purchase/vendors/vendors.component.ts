@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GuiColumn, GuiSorting } from '@generic-ui/ngx-grid';
 import { MdbModalService, MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { AddVendorComponent } from './add-vendor/add-vendor.component';
+import { VendorRepository } from '../+state/vendor.repository';
 
 @Component({
   selector: 'app-vendors',
@@ -26,61 +27,61 @@ export class VendorsComponent {
 
   columns: Array<GuiColumn> = [
     {
-      header: 'Item',
-      field: 'item'
+      header: 'Vendor ID',
+      field: 'vendorId'
     },
     {
-      header: 'SKU',
-      field: 'sku'
+      header: 'Company Name',
+      field: 'companyName'
     },
     {
-      header: 'Description',
-      field: 'description'
+      header: 'Address',
+      field: 'address'
     },
     {
-      header: 'Order By',
-      field: 'unitDetails',
-      formatter: (data: any) => data.masterCase
+      header: 'City',
+      field: 'address',
+      // formatter: (data: any) => data.masterCase
     },
     {
-      header: 'Qty',
-      field: 'unitDetails',
-      formatter: (data: any) => data.innerBox
+      header: 'State',
+      field: 'address',
+      // formatter: (data: any) => data.innerBox
     },
     {
-      header: 'U. Price',
-      field: 'unitDetails',
-      formatter: (data: any) => data.pack
+      header: 'Zip Code',
+      field: 'address',
+      // formatter: (data: any) => data.pack
     },
     {
-      header: 'U. Pack',
-      field: 'unitDetails',
-      formatter: (data: any) => data.pieces
+      header: 'Contact',
+      field: 'contactName',
+      // formatter: (data: any) => data.pieces
     },
     {
-      header: 'Cost By Case',
-      field: 'job'
+      header: 'Phone',
+      field: 'phone'
     },
     {
-      header: 'Total',
-      field: 'age'
+      header: 'Email',
+      field: 'email'
     },
-    // {
-    //   header: 'Multi-Warehouse',
-    //   field: 'name'
-    // },
-    // {
-    //   header: 'Status',
-    //   field: 'job'
-    // }
+    {
+      header: 'Action',
+      // field: 'name'
+    },
   ];
 
   sorting: GuiSorting = {
     enabled: true
   };
 
-  constructor(private modalService: MdbModalService) {
-
+  constructor(private modalService: MdbModalService, public vendorRepo: VendorRepository) {
+    this.vendorRepo.fetchData().subscribe();
+    this.vendorRepo.vendors$.subscribe((res) => {
+      console.warn(res)
+      this.source = res;
+    })
   }
 
   addVendor() {

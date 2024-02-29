@@ -16,8 +16,6 @@ import { ItemComponent } from './products/item/item.component';
 import { InventoryRepository } from './+state/inventory.repository';
 import { CreateSkuComponent } from './modal/create-sku/create-sku.component';
 
-
-
 @NgModule({
   declarations: [
     InventoryComponent,

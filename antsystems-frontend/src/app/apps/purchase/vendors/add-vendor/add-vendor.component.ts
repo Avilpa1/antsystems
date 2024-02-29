@@ -9,7 +9,8 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 })
 export class AddVendorComponent {
   form!: FormGroup;
-
+  showStreet2: boolean = false;
+  
   constructor(public modalRef: MdbModalRef<AddVendorComponent>) {
     this.initForm();
   }
@@ -20,11 +21,18 @@ export class AddVendorComponent {
         vendorId: new FormControl(null, [Validators.required]),
         accountNumber: new FormControl(null, [Validators.required]),
         netPayment: new FormControl(null, [Validators.required]),
-        address: new FormControl(null, [Validators.required]),
         companyName: new FormControl(null, [Validators.required]),
         contactName: new FormControl(null, [Validators.required]),
         phone: new FormControl(null, [Validators.required]),
         email: new FormControl(null, [Validators.required]),
+        address: new FormGroup({
+          street: new FormControl(null, [Validators.required]),
+          street2: new FormControl(null),
+          city: new FormControl(null, [Validators.required]),
+          state: new FormControl(null, [Validators.required]),
+          zip: new FormControl(null, [Validators.required]),
+        }),
+
       }
     )
   }

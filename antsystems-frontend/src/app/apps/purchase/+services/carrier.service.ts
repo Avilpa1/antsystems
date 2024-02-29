@@ -1,0 +1,30 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Carrier } from '../+models/carrier.models';
+import { ApiService } from 'src/app/apps/shared/services/api.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CarrierService {
+
+  baseUrl = "api/carriers"
+
+  constructor(private http: HttpClient, private api: ApiService) { }
+
+  get() {
+    return this.api.get(this.baseUrl);
+  }
+
+  add(item: Carrier) {
+    return this.http.post(this.baseUrl, item);
+  }
+
+  update(item: Carrier) {
+    return this.http.patch(this.baseUrl, item);
+  }
+
+  delete(id: string) {
+    return this.http.delete(this.baseUrl);
+  }
+}
