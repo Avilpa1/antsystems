@@ -7,10 +7,10 @@ const vendorsSchema = new mongoose.Schema({
     netPayment: { type: String },
     address: {
       street: { type: String},
-      street2: { type: String}
-      city: { type: String}
-      state: { type: String}
-      zip: { type: String}
+      street2: { type: String},
+      city: { type: String},
+      state: { type: String},
+      zip: { type: String},
     },
     companyName: { type: String },
     contactName: { type: String },
