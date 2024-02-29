@@ -28,7 +28,8 @@ export class VendorsComponent {
   columns: Array<GuiColumn> = [
     {
       header: 'Vendor ID',
-      field: 'vendorId'
+      field: 'vendorId',
+      width: 100
     },
     {
       header: 'Company Name',
@@ -36,27 +37,30 @@ export class VendorsComponent {
     },
     {
       header: 'Address',
-      field: 'address'
+      field: 'address',
+      formatter: (data: any) => data.street
     },
     {
       header: 'City',
       field: 'address',
-      // formatter: (data: any) => data.masterCase
+      width: 120,
+      formatter: (data: any) => data.city
     },
     {
       header: 'State',
       field: 'address',
-      // formatter: (data: any) => data.innerBox
+      width: 60,
+      formatter: (data: any) => data.state
     },
     {
       header: 'Zip Code',
       field: 'address',
-      // formatter: (data: any) => data.pack
+      width: 100,
+      formatter: (data: any) => data.zip
     },
     {
       header: 'Contact',
       field: 'contactName',
-      // formatter: (data: any) => data.pieces
     },
     {
       header: 'Phone',
@@ -68,6 +72,7 @@ export class VendorsComponent {
     },
     {
       header: 'Action',
+      width: 100
       // field: 'name'
     },
   ];

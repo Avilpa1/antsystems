@@ -17,6 +17,7 @@ export class DropdownComponent {
   @Input() items!: string;
   @Input() options!: any;
   @Input() placeHolder!: any;
+  @Input() feild: string = 'name';
   @Input() actionBtnConfig!: actionBtn[];
   @Output() actionBtnEvent = new EventEmitter();
   @Output() selectedItemEvent = new EventEmitter();
@@ -24,8 +25,8 @@ export class DropdownComponent {
 
   constructor() {}
 
-  selectOption(value: string) {
-    this.control?.patchValue(value)
+  selectOption(value: any) {
+    this.control?.patchValue(value[this.feild])
     this.show.next(false);
     this.selectedItemEvent.emit(value);
   }

@@ -18,8 +18,8 @@
     <ng-container *ngFor="let option of options | textFilter:control.value:['name']; let i=index">
         <span *ngIf="i < 5"
             class="cursor-pointer py-1 text-sm hover:bg-blue-500 w-full hover:text-white select-none"
-            (click)="selectOption(option.name)">
-            {{ option.name }}
+            (click)="selectOption(option)">
+            {{ option[feild] }}
         </span>        
     </ng-container>
 </div>

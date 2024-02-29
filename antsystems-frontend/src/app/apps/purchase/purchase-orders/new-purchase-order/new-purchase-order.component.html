@@ -24,7 +24,9 @@
                     class=""
                     placeHolder=""
                     [options]="vendors"
+                    feild="companyName"
                     [control]="form.get('vendor')"
+                    (selectedItemEvent)="setVendor($event)"
                     >
                 </ant-dropdown>
             </div>

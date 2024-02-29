@@ -166,8 +166,8 @@ export class ItemComponent {
     this.modalRef = this.modalService.open(CreateSkuComponent, this.modalConfig)
   }
 
-  selectItemFromDropdown(itemNumber: string) {
-    const item = this.itemRepo.getByItem(itemNumber)!;
+  selectItemFromDropdown(event: any) {
+    const item = this.itemRepo.getByItem(event.name)!;
     this.productForm.patchValue(item);
     this.canEditItem = false;
     this.productForm.disable();

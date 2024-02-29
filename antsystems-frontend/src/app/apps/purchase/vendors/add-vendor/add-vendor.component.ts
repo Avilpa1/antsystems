@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
+import { VendorService } from '../../+services/vendor.service';
+import { VendorRepository } from '../../+state/vendor.repository';
 
 @Component({
   selector: 'app-add-vendor',
@@ -10,8 +12,8 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 export class AddVendorComponent {
   form!: FormGroup;
   showStreet2: boolean = false;
-  
-  constructor(public modalRef: MdbModalRef<AddVendorComponent>) {
+
+  constructor(public modalRef: MdbModalRef<AddVendorComponent>, private vendorRepo: VendorRepository) {
     this.initForm();
   }
   
@@ -38,11 +40,12 @@ export class AddVendorComponent {
   }
 
   save() {
-    console.warn(this.form.value)
+    console.warn(this.form.value);
+    this.vendorRepo.add(this.form.value).subscribe();
   }
 
   close(value: any): void {
-    this.modalRef.close(value)
+    this.modalRef.close(value);
   }
 
 }

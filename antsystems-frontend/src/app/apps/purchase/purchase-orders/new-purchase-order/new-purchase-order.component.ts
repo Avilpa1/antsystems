@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { GuiColumn, GuiSorting } from '@generic-ui/ngx-grid';
+import { VendorRepository } from '../../+state/vendor.repository';
 
 @Component({
   selector: 'app-new-purchase-order',
@@ -70,8 +71,12 @@ export class NewPurchaseOrderComponent {
     enabled: true
   };
 
-  constructor() {
+  constructor(public vendorRepo: VendorRepository) {
     this.initForm();
+    this.vendorRepo.fetchData().subscribe();
+    this.vendorRepo.vendors$.subscribe((res: any) => {
+      this.vendors = res
+    })
   }
 
   initForm() {
@@ -91,5 +96,12 @@ export class NewPurchaseOrderComponent {
 
       }
     )
+  }
+
+  setVendor(event: any) {
+    console.warn(event)
+    this.form.controls['netPayment'].patchValue(event.netPayment);
+    this.form.controls['accountNumber'].patchValue(event.accountNumber);
+
   }
 }
