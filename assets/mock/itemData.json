@@ -1,0 +1,347 @@
+[
+    {
+        "id": 1,
+        "active": true,
+        "sku": "EP90BP-4",
+        "item": "EP90BP-4",
+        "description": "Energizer AA Batteries",
+        "unitDetails": {
+            "masterCase": 96,
+            "innerBox": 2,
+            "pack": 24,
+            "pieces": 4,
+            "caseByPallet": 175,
+            "rowAndCase": "5rw / 35cs"
+        },
+        "marketplace": {
+            "iSku": ""
+        },
+        "priceDetails": {
+            "retailPrice": 2.35,
+            "wholesalePrice": 2.05,
+            "distributor": 1.90,
+            "onlinePrice": 4.49
+        },
+        "categories": {
+            "category": {
+                "name": "Electronics",
+                "id": 1
+            },
+            "subCategory": {
+                "name": "Batteries",
+                "id": 1,
+                "parentId": [
+                    1
+                ]
+            },
+            "productType": {
+                "name": "Lithium",
+                "id": 1,
+                "parentId": [
+                    1
+                ]
+            },
+            "subProductType": {
+                "name": "AAA",
+                "id": 3,
+                "parentId": [
+                    1
+                ]
+            }
+        },
+        "brandName": {
+            "brandName": {
+                "name": "Energizer",
+                "id": 1
+            },
+            "subBrand": {
+                "name": "DD",
+                "id": 4,
+                "parentId": [
+                    1
+                ]
+            }
+        },
+        "measuringDetails": {
+            "lengthWidthHeight": "10x4x12",
+            "volume": "0.008/0.278",
+            "measuringType": {
+                "name": "Inches",
+                "id": 1,
+                "MeasuringType": "In"
+            },
+            "weight": "5.56",
+            "weightType": {
+                "name": "Pound",
+                "id": 1,
+                "weightType": "Lb"
+            },
+            "totalPoundPallet": "1028.75"
+        },
+        "barcode": {
+            "case": "895625632459",
+            "inner": "895625632432",
+            "pack": "895625632478",
+            "piece": "895625632498"
+        },
+        "locations": {
+            "warehouseLocation": {
+                "id": 1,
+                "name": "Main Warehouse",
+                "address": {
+                    "street": "11340 Highway 67",
+                    "street2": "",
+                    "city": "Lakeside",
+                    "state": "CA",
+                    "zip": "92040",
+                    "country": "USA"
+                }
+            },
+            "binLocation": {
+                "id": 1,
+                "parentId": [
+                    1
+                ],
+                "name": "A105",
+                "note": ""
+            }
+        },
+        "expirationDetails": {
+            "manufactureDate": "03/2021",
+            "expirationDate": "03/2031",
+            "lot": "EF2345",
+            "madeIn": "Malaysia",
+            "serialNumber": ""
+        }
+    },
+    {
+        "id": 2,
+        "active": true,
+        "sku": "EP90BP-5",
+        "item": "EP90BP-5",
+        "description": "Energizer AA Batteries",
+        "unitDetails": {
+            "masterCase": 96,
+            "innerBox": 2,
+            "pack": 24,
+            "pieces": 4,
+            "caseByPallet": 175,
+            "rowAndCase": "5rw / 35cs"
+        },
+        "marketplace": {
+            "iSku": ""
+        },
+        "priceDetails": {
+            "retailPrice": 2.35,
+            "wholesalePrice": 2.05,
+            "distributor": 1.90,
+            "onlinePrice": 4.49
+        },
+        "categories": {
+            "category": {
+                "name": "Electronics",
+                "id": 1
+            },
+            "subCategory": {
+                "name": "Batteries",
+                "id": 1,
+                "parentId": [
+                    1
+                ]
+            },
+            "productType": {
+                "name": "Lithium",
+                "id": 1,
+                "parentId": [
+                    1
+                ]
+            },
+            "subProductType": {
+                "name": "AAA",
+                "id": 3,
+                "parentId": [
+                    1
+                ]
+            }
+        },
+        "brandName": {
+            "brandName": {
+                "name": "Energizer",
+                "id": 1
+            },
+            "subBrand": {
+                "name": "DD",
+                "id": 4,
+                "parentId": [
+                    1
+                ]
+            }
+        },
+        "measuringDetails": {
+            "lengthWidthHeight": "10x4x12",
+            "volume": "0.008/0.278",
+            "measuringType": {
+                "name": "Inches",
+                "id": 1,
+                "MeasuringType": "In"
+            },
+            "weight": "5.56",
+            "weightType": {
+                "name": "Pound",
+                "id": 1,
+                "weightType": "Lb"
+            },
+            "totalPoundPallet": "1028.75"
+        },
+        "barcode": {
+            "case": "895625632459",
+            "inner": "895625632432",
+            "pack": "895625632478",
+            "piece": "895625632498"
+        },
+        "locations": {
+            "warehouseLocation": {
+                "id": 1,
+                "name": "Main Warehouse",
+                "address": {
+                    "street": "11340 Highway 67",
+                    "street2": "",
+                    "city": "Lakeside",
+                    "state": "CA",
+                    "zip": "92040",
+                    "country": "USA"
+                }
+            },
+            "binLocation": {
+                "id": 1,
+                "parentId": [
+                    1
+                ],
+                "name": "A105",
+                "note": ""
+            }
+        },
+        "expirationDetails": {
+            "manufactureDate": "03/2021",
+            "expirationDate": "03/2031",
+            "lot": "EF2345",
+            "madeIn": "Malaysia",
+            "serialNumber": ""
+        }
+    },
+    {
+        "id": 3,
+        "active": true,
+        "sku": "EP90BP-6",
+        "item": "EP90BP-6",
+        "description": "Energizer AA Batteries",
+        "unitDetails": {
+            "masterCase": 96,
+            "innerBox": 2,
+            "pack": 24,
+            "pieces": 4,
+            "caseByPallet": 175,
+            "rowAndCase": "5rw / 35cs"
+        },
+        "marketplace": {
+            "iSku": ""
+        },
+        "priceDetails": {
+            "retailPrice": 2.35,
+            "wholesalePrice": 2.05,
+            "distributor": 1.90,
+            "onlinePrice": 4.49
+        },
+        "categories": {
+            "category": {
+                "name": "Electronics",
+                "id": 1
+            },
+            "subCategory": {
+                "name": "Batteries",
+                "id": 1,
+                "parentId": [
+                    1
+                ]
+            },
+            "productType": {
+                "name": "Lithium",
+                "id": 1,
+                "parentId": [
+                    1
+                ]
+            },
+            "subProductType": {
+                "name": "AAA",
+                "id": 3,
+                "parentId": [
+                    1
+                ]
+            }
+        },
+        "brandName": {
+            "brandName": {
+                "name": "Energizer",
+                "id": 1
+            },
+            "subBrand": {
+                "name": "DD",
+                "id": 4,
+                "parentId": [
+                    1
+                ]
+            }
+        },
+        "measuringDetails": {
+            "lengthWidthHeight": "10x4x12",
+            "volume": "0.008/0.278",
+            "measuringType": {
+                "name": "Inches",
+                "id": 1,
+                "MeasuringType": "In"
+            },
+            "weight": "5.56",
+            "weightType": {
+                "name": "Pound",
+                "id": 1,
+                "weightType": "Lb"
+            },
+            "totalPoundPallet": "1028.75"
+        },
+        "barcode": {
+            "case": "895625632459",
+            "inner": "895625632432",
+            "pack": "895625632478",
+            "piece": "895625632498"
+        },
+        "locations": {
+            "warehouseLocation": {
+                "id": 1,
+                "name": "Main Warehouse",
+                "address": {
+                    "street": "11340 Highway 67",
+                    "street2": "",
+                    "city": "Lakeside",
+                    "state": "CA",
+                    "zip": "92040",
+                    "country": "USA"
+                }
+            },
+            "binLocation": {
+                "id": 1,
+                "parentId": [
+                    1
+                ],
+                "name": "A105",
+                "note": ""
+            }
+        },
+        "expirationDetails": {
+            "manufactureDate": "03/2021",
+            "expirationDate": "03/2031",
+            "lot": "EF2345",
+            "madeIn": "Malaysia",
+            "serialNumber": ""
+        }
+    }
+]
