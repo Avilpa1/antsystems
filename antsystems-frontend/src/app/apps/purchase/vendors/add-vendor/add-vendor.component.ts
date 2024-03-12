@@ -42,6 +42,7 @@ export class AddVendorComponent {
   save() {
     console.warn(this.form.value);
     this.vendorRepo.add(this.form.value).subscribe();
+    this.close(true);
   }
 
   close(value: any): void {

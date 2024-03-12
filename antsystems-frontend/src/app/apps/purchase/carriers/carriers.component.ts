@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GuiColumn, GuiSorting } from '@generic-ui/ngx-grid';
 import { MdbModalService, MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { AddCarrierComponent } from './add-carrier/add-carrier.component';
+import { CarrierRepository } from '../+state/carrier.repository';
 
 @Component({
   selector: 'app-carriers',
@@ -27,61 +28,44 @@ export class CarriersComponent {
 
   columns: Array<GuiColumn> = [
     {
-      header: 'Item',
-      field: 'item'
+      header: 'Carrier ID',
+      field: 'carrierId'
     },
     {
-      header: 'SKU',
-      field: 'sku'
+      header: 'Company Name',
+      field: 'companyName'
     },
     {
-      header: 'Description',
-      field: 'description'
+      header: 'Contact Name',
+      field: 'contactName'
     },
     {
-      header: 'Order By',
-      field: 'unitDetails',
-      formatter: (data: any) => data.masterCase
+      header: 'Phone',
+      field: 'phone'
     },
     {
-      header: 'Qty',
-      field: 'unitDetails',
-      formatter: (data: any) => data.innerBox
+      header: 'Email',
+      field: 'email'
     },
     {
-      header: 'U. Price',
-      field: 'unitDetails',
-      formatter: (data: any) => data.pack
+      header: 'Service Type',
+      field: 'serviceType'
     },
     {
-      header: 'U. Pack',
-      field: 'unitDetails',
-      formatter: (data: any) => data.pieces
-    },
-    {
-      header: 'Cost By Case',
-      field: 'job'
-    },
-    {
-      header: 'Total',
-      field: 'age'
-    },
-    // {
-    //   header: 'Multi-Warehouse',
-    //   field: 'name'
-    // },
-    // {
-    //   header: 'Status',
-    //   field: 'job'
-    // }
+      header: 'Actiom',
+    }
   ];
 
   sorting: GuiSorting = {
     enabled: true
   };
 
-  constructor(private modalService: MdbModalService) {
-
+  constructor(private modalService: MdbModalService, public carrierRepo: CarrierRepository) {
+    this.carrierRepo.fetchData().subscribe();
+    this.carrierRepo.carriers$.subscribe((res) => {
+      console.warn(res)
+      this.source = res;
+    })
   }
 
   addCarrier() {
