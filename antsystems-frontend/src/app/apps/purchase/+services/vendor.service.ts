@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Vendor } from '../+models/vendor.models';
 import { ApiService } from 'src/app/apps/shared/services/api.service';
-
+import { environment } from '../../../../environments/environment'
 @Injectable({
   providedIn: 'root'
 })
 export class VendorService {
 
-  baseUrl = "api/vendors"
+  baseUrl = environment.apiUrl; //"api/vendors"
 
   constructor(private http: HttpClient, private api: ApiService) { }
 
