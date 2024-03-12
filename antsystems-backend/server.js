@@ -5,6 +5,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser')
+const cors=require('cors');
 
 const itemRouter = require('./routes/items')
 const categoriesRouter = require('./routes/categories')
@@ -14,6 +15,7 @@ const carriersRouter = require('./routes/carriers')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cors())
 
 // Mongoose 
 const mongoose = require("mongoose");
