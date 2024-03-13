@@ -29,15 +29,39 @@ export class CarriersComponent {
   columns: Array<GuiColumn> = [
     {
       header: 'Carrier ID',
-      field: 'carrierId'
+      field: 'carrierId',
+      width: 100
     },
     {
       header: 'Company Name',
       field: 'companyName'
     },
     {
-      header: 'Contact Name',
-      field: 'contactName'
+      header: 'Address',
+      field: 'address',
+      formatter: (data: any) => data.street
+    },
+    {
+      header: 'City',
+      field: 'address',
+      width: 120,
+      formatter: (data: any) => data.city
+    },
+    {
+      header: 'State',
+      field: 'address',
+      width: 60,
+      formatter: (data: any) => data.state
+    },
+    {
+      header: 'Zip Code',
+      field: 'address',
+      width: 100,
+      formatter: (data: any) => data.zip
+    },
+    {
+      header: 'Contact',
+      field: 'contactName',
     },
     {
       header: 'Phone',
@@ -48,12 +72,14 @@ export class CarriersComponent {
       field: 'email'
     },
     {
-      header: 'Service Type',
+      header: 'Type Of Service',
       field: 'serviceType'
     },
     {
-      header: 'Actiom',
-    }
+      header: 'Action',
+      width: 100
+      // field: 'name'
+    },
   ];
 
   sorting: GuiSorting = {
@@ -73,5 +99,13 @@ export class CarriersComponent {
     this.modalRef.onClose.subscribe((value: any) => {
 
     }); 
+  }
+
+  edit() {
+
+  }
+
+  delete() {
+    
   }
 }

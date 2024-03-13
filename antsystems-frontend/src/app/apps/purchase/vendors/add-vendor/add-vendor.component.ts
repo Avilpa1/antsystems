@@ -34,7 +34,6 @@ export class AddVendorComponent {
           state: new FormControl(null, [Validators.required]),
           zip: new FormControl(null, [Validators.required]),
         }),
-
       }
     )
   }

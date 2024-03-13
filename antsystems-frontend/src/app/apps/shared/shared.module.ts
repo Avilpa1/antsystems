@@ -11,6 +11,8 @@ import { ModalFactoryComponent } from './components/modal/modal-factory/modal-fa
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { TextFilterPipe } from './pipes/filterByKeyword.pipe';
 import { AntTextComponent } from './components/text/text.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     StatusCardComponent,
@@ -27,7 +29,9 @@ import { AntTextComponent } from './components/text/text.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    GuiGridModule
+    GuiGridModule,
+    MatMenuModule,
+    MatIconModule
   ],
   exports: [
     FormsModule,
@@ -41,7 +45,9 @@ import { AntTextComponent } from './components/text/text.component';
     ModalFactoryComponent,
     DropdownComponent,
     TextFilterPipe,
-    AntTextComponent
+    AntTextComponent,
+    MatMenuModule,
+    MatIconModule
   ]
 })
 export class SharedModule { }
