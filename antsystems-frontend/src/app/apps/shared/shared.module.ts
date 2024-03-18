@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StatusCardComponent } from './components/status-card/status-card.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterByParentIdPipe } from './pipes/filterById.pipe';
 import { EnableDisableDirective } from './directives/enableDisable.directive';
 import { SelectComponent } from './components/select/select.component';
@@ -13,6 +12,7 @@ import { TextFilterPipe } from './pipes/filterByKeyword.pipe';
 import { AntTextComponent } from './components/text/text.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     StatusCardComponent,

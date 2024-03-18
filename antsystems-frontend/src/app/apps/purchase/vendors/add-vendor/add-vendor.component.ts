@@ -10,11 +10,15 @@ import { VendorRepository } from '../../+state/vendor.repository';
   styleUrls: ['./add-vendor.component.scss']
 })
 export class AddVendorComponent {
+  props: any | null = null;
   form!: FormGroup;
   showStreet2: boolean = false;
 
   constructor(public modalRef: MdbModalRef<AddVendorComponent>, private vendorRepo: VendorRepository) {
     this.initForm();
+    setTimeout(() => {
+      this.form.patchValue(this.props)
+  }, 250);
   }
   
   initForm() {
@@ -40,7 +44,15 @@ export class AddVendorComponent {
 
   save() {
     console.warn(this.form.value);
-    this.vendorRepo.add(this.form.value).subscribe();
+    if (!this.props) {
+      this.vendorRepo.add(this.form.value).subscribe();
+    } else {
+      const data = {
+        id: this.props.id,
+        ...this.form.value
+      }
+      this.vendorRepo.update(data).subscribe();
+    }
     this.close(true);
   }
 

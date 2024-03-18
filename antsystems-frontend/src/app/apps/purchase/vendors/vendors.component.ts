@@ -3,6 +3,7 @@ import { GuiColumn, GuiSorting } from '@generic-ui/ngx-grid';
 import { MdbModalService, MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { AddVendorComponent } from './add-vendor/add-vendor.component';
 import { VendorRepository } from '../+state/vendor.repository';
+import { Vendor } from '../+models/vendor.models';
 
 @Component({
   selector: 'app-vendors',
@@ -18,7 +19,8 @@ export class VendorsComponent {
     data: {
       title: 'Warning!',
       prev: '',
-      new: ''
+      new: '',
+      props: {}
     },
     modalClass: 'modal-dialog-centered modal-lg',
   }
@@ -94,5 +96,18 @@ export class VendorsComponent {
     this.modalRef.onClose.subscribe((value: any) => {
 
     }); 
+  }
+
+  edit(vendor: Vendor) {
+    this.modalConfig.data.props = vendor;
+    this.modalRef = this.modalService.open(AddVendorComponent, this.modalConfig);
+    this.modalRef.onClose.subscribe((value: any) => {
+
+    });
+  }
+
+  delete(id: number) {
+    console.log(id)
+    this.vendorRepo.delete(id).subscribe()
   }
 }

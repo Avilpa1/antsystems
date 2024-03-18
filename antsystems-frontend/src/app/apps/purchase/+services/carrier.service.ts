@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Carrier } from '../+models/carrier.models';
 import { ApiService } from 'src/app/apps/shared/services/api.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarrierService {
 
-  baseUrl = "api/carriers"
+  baseUrl = `${environment.apiUrl}/carriers`;
 
   constructor(private http: HttpClient, private api: ApiService) { }
 
@@ -21,10 +22,10 @@ export class CarrierService {
   }
 
   update(item: Carrier) {
-    return this.http.patch(this.baseUrl, item);
+    return this.http.patch(`${this.baseUrl}/${item.id}`, item);
   }
 
-  delete(id: string) {
-    return this.http.delete(this.baseUrl);
+  delete(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }

@@ -1,6 +1,6 @@
 {
     "/api": {
-      "target": "https://courageous-plum-hippopotamus.cyclic.app/",
+      "target": "http://localhost:3000/",
       "secure": false,
       "pathRewrite": {
         "^/api": ""
@@ -9,4 +9,3 @@
       "logLevel": "debug"
     }
   }
-  

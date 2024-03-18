@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { createStore } from '@ngneat/elf';
-import { getEntity, selectAllEntities, setEntities, upsertEntities, withEntities } from '@ngneat/elf-entities';
+import { deleteEntities, getEntity, selectAllEntities, setEntities, updateEntities, updateEntitiesIds, upsertEntities, withEntities } from '@ngneat/elf-entities';
 import {
   createRequestsCacheOperator,
   updateRequestCache,
@@ -35,6 +35,12 @@ export class CarrierRepository {
     )
   }
 
+  update(item: Carrier) {
+    return this.carrierService.update(item).pipe(
+      tap(x => carrierStore.update(updateEntities(item.id, item)))
+    )
+  }
+
   getById(id: number) {
     return carrierStore.query(getEntity(id));
   }
@@ -44,5 +50,11 @@ export class CarrierRepository {
       map((x: any) => x.map((val: any) => ({ ...val, id: val._id }))),
       tap(this.setItems),
       this.skipWhileTodosCached('carrier'))
+  }
+
+  delete(id: number) {
+    return this.carrierService.delete(id).pipe(
+      tap(x => carrierStore.update(deleteEntities(id)))
+    )
   }
 }

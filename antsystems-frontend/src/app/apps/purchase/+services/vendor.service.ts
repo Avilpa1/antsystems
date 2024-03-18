@@ -21,10 +21,10 @@ export class VendorService {
   }
 
   update(item: Vendor) {
-    return this.http.patch(this.baseUrl, item);
+    return this.http.patch(`${this.baseUrl}/${item.id}`, item);
   }
 
-  delete(id: string) {
-    return this.http.delete(this.baseUrl);
+  delete(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }

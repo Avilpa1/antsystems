@@ -8,6 +8,8 @@ import { ShellModule } from './shell/shell.module';
 import { SharedModule } from './apps/shared/shared.module';
 import { HttpClientModule } from  '@angular/common/http';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
     ShellModule,
     SharedModule,
     HttpClientModule,
-    MdbModalModule
+    MdbModalModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

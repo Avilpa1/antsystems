@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { createStore } from '@ngneat/elf';
-import { getEntity, selectAllEntities, setEntities, upsertEntities, withEntities } from '@ngneat/elf-entities';
+import { deleteEntities, getEntity, selectAllEntities, setEntities, updateEntities, upsertEntities, withEntities } from '@ngneat/elf-entities';
 import {
   createRequestsCacheOperator,
   updateRequestCache,
@@ -35,6 +35,12 @@ export class VendorRepository {
     )
   }
 
+  update(item: Vendor) {
+    return this.vendorService.update(item).pipe(
+      tap(x => vendorStore.update(updateEntities(item.id, item)))
+    )
+  }
+
   getById(id: number) {
     return vendorStore.query(getEntity(id));
   }
@@ -45,5 +51,11 @@ export class VendorRepository {
       map((x: any) => x.map((val: any) => ({...val, id: val._id}) )),
       tap(this.setItems), 
       this.skipWhileTodosCached('vendor'))
+  }
+
+  delete(id: number) {
+    return this.vendorService.delete(id).pipe(
+      tap(x => vendorStore.update(deleteEntities(id)))
+    )
   }
 }

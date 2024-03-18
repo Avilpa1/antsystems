@@ -71,16 +71,16 @@
               ]
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "antsystems-frontend:build:production"
+              "buildTarget": "antsystems-frontend:build:production"
             },
             "development": {
-              "browserTarget": "antsystems-frontend:build:development"
+              "buildTarget": "antsystems-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "antsystems-frontend:build"
+            "buildTarget": "antsystems-frontend:build"
           }
         },
         "test": {
