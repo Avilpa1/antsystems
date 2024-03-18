@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Carrier } from '../+models/carrier.models';
 import { ApiService } from 'src/app/apps/shared/services/api.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
