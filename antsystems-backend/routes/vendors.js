@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const DB = require('../models/vendors')
-const vendors = require('../models/vendors')
+// const DB = require('../models/vendors')
+const Vendors = require('../models/vendors')
 
 // Get
 router.get('/', async (req, res) => {
     try {
-        const db = await DB.find({})
+        const db = await Vendors.find({})
         res.json(db)
     } catch {
         
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 // Create
 router.post('/', async (req, res) => {
     console.log(req.body)
-    const vendor = new Vendor(req.body)
+    const vendor = new Vendors(req.body)
     try {
         const newItem = await vendor.save()
         console.log(newItem)
@@ -33,7 +33,7 @@ router.patch('/:id', async (req, res) => {
     var id = req.params.id;
     var {id, ...data} = req.body
     try {
-        const update = await vendors.findByIdAndUpdate(id, {
+        const update = await Vendors.findByIdAndUpdate(id, {
             ...data
         })
         res.json({status: "OK"})
@@ -49,7 +49,7 @@ router.delete('/:id', async (req, res) => {
     var id = req.params.id;
     console.log('delete', id)
     try {
-        await vendors.findByIdAndDelete({ _id: id })
+        await Vendors.findByIdAndDelete({ _id: id })
         res.json({status: "OK"})
     } catch {
         console.log('Error')
