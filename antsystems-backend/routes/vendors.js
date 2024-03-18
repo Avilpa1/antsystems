@@ -16,11 +16,11 @@ router.get('/', async (req, res) => {
 // Create
 router.post('/', async (req, res) => {
     console.log(req.body)
-    const db = new DB(req.body)
+    const vendor = new Vendor(req.body)
     try {
-        const newItem = await db.save()
+        const newItem = await vendor.save()
         console.log(newItem)
-        res.json(newItem)//.sendStatus(200)
+        res.json(newItem) //.sendStatus(200)
     } catch (err) {
         console.log('Error', err)
         res.sendStatus(500)
