@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { GuiColumn, GuiSorting } from '@generic-ui/ngx-grid';
 import { VendorRepository } from '../../+state/vendor.repository';
+import { CarrierRepository } from '../../+state/carrier.repository';
 
 @Component({
   selector: 'app-new-purchase-order',
@@ -10,9 +11,9 @@ import { VendorRepository } from '../../+state/vendor.repository';
 })
 export class NewPurchaseOrderComponent {
   form!: FormGroup;
-  statusOptions = [{name: 'New'}, {name: 'Pending'}, {name: 'Cancelled'}]
-  vendors = [{name: 'Vendor 1', id: 1}, {name: 'Vendor 2', id: 2}, {name: 'Vendor 3', id: 3}]
-  shipTo = [{name: 'Main Warehouse', id: 1}, {name: '2nd Warehouse', id: 2}, {name: 'Store Warehouse', id: 3}]
+  statusOptions = [{name: 'New'}, {name: 'Pending'}, {name: 'Cancelled'}];
+  vendors = [];
+  shipTo = [];
 
   source: Array<any> = []
 
@@ -71,11 +72,16 @@ export class NewPurchaseOrderComponent {
     enabled: true
   };
 
-  constructor(public vendorRepo: VendorRepository) {
+  constructor(public vendorRepo: VendorRepository, public carrierRepo: CarrierRepository) {
     this.initForm();
     this.vendorRepo.fetchData().subscribe();
+    this.carrierRepo.fetchData().subscribe();
+
     this.vendorRepo.vendors$.subscribe((res: any) => {
       this.vendors = res
+    })
+    this.carrierRepo.carriers$.subscribe((res: any) => {
+      this.shipTo = res
     })
   }
 
@@ -102,6 +108,11 @@ export class NewPurchaseOrderComponent {
     console.warn(event)
     this.form.controls['netPayment'].patchValue(event.netPayment);
     this.form.controls['accountNumber'].patchValue(event.accountNumber);
+  }
 
+  setCarrier(event: any) {
+    console.warn(event)
+    this.form.controls['shipVia'].patchValue(event.serviceType);
+    this.form.controls['freightTerm'].patchValue(event.accountNumber);
   }
 }

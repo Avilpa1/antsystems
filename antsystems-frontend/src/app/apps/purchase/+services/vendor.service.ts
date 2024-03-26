@@ -17,6 +17,7 @@ export class VendorService {
   }
 
   add(item: Vendor) {
+    console.warn("vendor Added", item)
     return this.http.post(this.baseUrl, item);
   }
 

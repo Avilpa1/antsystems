@@ -42,7 +42,7 @@ export class AddCarrierComponent {
 
   save() {
     console.warn(this.form.value);
-    if (!this.props) {
+    if (!this.props.id) {
       this.carrierRepo.add(this.form.value).subscribe();
     } else {
       const data = {

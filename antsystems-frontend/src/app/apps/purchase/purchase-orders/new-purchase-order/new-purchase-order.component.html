@@ -53,7 +53,9 @@
                     class=""
                     placeHolder=""
                     [options]="shipTo"
+                    feild="companyName"
                     [control]="form.get('shipTo')"
+                    (selectedItemEvent)="setCarrier($event)"
                     >
                 </ant-dropdown>
             </div>

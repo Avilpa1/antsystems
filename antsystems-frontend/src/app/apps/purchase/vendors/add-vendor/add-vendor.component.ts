@@ -44,7 +44,7 @@ export class AddVendorComponent {
 
   save() {
     console.warn(this.form.value);
-    if (!this.props) {
+    if (!this.props.id) {
       this.vendorRepo.add(this.form.value).subscribe();
     } else {
       const data = {
