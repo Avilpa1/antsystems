@@ -1,9 +1,60 @@
 <div class="mt-4">
     <gui-grid 
         [source]="source" 
-        [columns]="columns" 
         [sorting]="sorting" 
         [verticalGrid]="false"
-        [horizontalGrid]="true">
+        [horizontalGrid]="true"
+        (itemsSelected)="rowSelected($event)">
+        <gui-grid-column header="Date" [field]="'date'" type="string" view="text">
+        </gui-grid-column>
+        <gui-grid-column header="PO Number" [field]="'poNumber'" type="string" view="text">
+        </gui-grid-column>
+        <gui-grid-column header="Vendor ID" [field]="'vendor'" type="string" view="text">
+            <ng-template let-value="value" let-index="index" let-item="item">
+                <span>{{value.vendorId}}</span>
+            </ng-template>
+        </gui-grid-column>
+        <gui-grid-column header="Company Name" [field]="'vendor'" type="string" view="text">
+            <ng-template let-value="value" let-index="index" let-item="item">
+                <span>{{value.vendorName}}</span>
+            </ng-template>
+        </gui-grid-column>
+        <!-- <gui-grid-column header="State" [field]="'address'" type="string" view="text">
+            <ng-template let-value="value" let-index="index" let-item="item">
+                <span>{{value.state}}</span>
+            </ng-template>
+        </gui-grid-column>
+        <gui-grid-column header="Zip Code" [field]="'address'" type="string" view="text">
+            <ng-template let-value="value" let-index="index" let-item="item">
+                <span>{{value.zip}}</span>
+            </ng-template>
+        </gui-grid-column> -->
+        <gui-grid-column header="Amount" [field]="'total'" type="string" view="text">
+            <ng-template let-value="value" let-item="item">{{item.total | currency}}</ng-template>
+        </gui-grid-column>
+        <gui-grid-column header="ETA" [field]="'etaDate'" type="string" view="text">
+        </gui-grid-column>
+        <gui-grid-column header="Qty Ordered" [field]="''" type="string" view="text">
+        </gui-grid-column>
+        <gui-grid-column [cellEditing]="false" [sorting]="false" >
+            <ng-template let-value="value" let-item="item">
+                <!-- <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon class="text-base">more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu"> -->
+                    <!-- <button mat-menu-item (click)="edit(item)">
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit</span>
+                    </button>
+                    <button mat-menu-item (click)="delete(item.id)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </button> -->
+                <!-- </mat-menu> -->
+                <div class="rounded-full bg-yellow-300 px-3 py-1 w-full text-center">
+                    <span>{{item.status | titlecase}}</span>
+                </div>
+            </ng-template>
+        </gui-grid-column>
     </gui-grid>
 </div>

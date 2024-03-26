@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/apps/shared/services/api.service';
 })
 export class PurchaseOrderService {
 
-  baseUrl = "api/purchase"
+  baseUrl = "api/purchaseOrders"
 
   constructor(private http: HttpClient, private api: ApiService) { }
 

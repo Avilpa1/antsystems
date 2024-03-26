@@ -70,6 +70,10 @@ const routes: Routes = [
                         component: PurchaseOrderListComponent
                     },
                     {
+                        path: 'orders/:id',
+                        component: NewPurchaseOrderComponent
+                    },
+                    {
                         path: 'new-order',
                         component: NewPurchaseOrderComponent
                     }

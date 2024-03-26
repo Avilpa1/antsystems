@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { GuiColumn, GuiSorting } from '@generic-ui/ngx-grid';
+import { PurchaseOrdersRepository } from '../../+state/purchase-order.repository';
+import { PurchaseOrder } from '../../+models/purchase-order.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-purchase-order-list',
@@ -10,59 +13,22 @@ export class PurchaseOrderListComponent {
 
   source: Array<any> = []
 
-  columns: Array<GuiColumn> = [
-    {
-      header: 'Item',
-      field: 'item'
-    },
-    {
-      header: 'SKU',
-      field: 'sku'
-    },
-    {
-      header: 'Description',
-      field: 'description'
-    },
-    {
-      header: 'Order By',
-      field: 'unitDetails',
-      formatter: (data: any) => data.masterCase
-    },
-    {
-      header: 'Qty',
-      field: 'unitDetails',
-      formatter: (data: any) => data.innerBox
-    },
-    {
-      header: 'U. Price',
-      field: 'unitDetails',
-      formatter: (data: any) => data.pack
-    },
-    {
-      header: 'U. Pack',
-      field: 'unitDetails',
-      formatter: (data: any) => data.pieces
-    },
-    {
-      header: 'Cost By Case',
-      field: 'job'
-    },
-    {
-      header: 'Total',
-      field: 'age'
-    },
-    // {
-    //   header: 'Multi-Warehouse',
-    //   field: 'name'
-    // },
-    // {
-    //   header: 'Status',
-    //   field: 'job'
-    // }
-  ];
+  columns: Array<GuiColumn> = []
 
   sorting: GuiSorting = {
     enabled: true
   };
 
+  constructor(public poRepo: PurchaseOrdersRepository, private router: Router) {
+    this.poRepo.fetchData().subscribe();
+    this.poRepo.purchaseOrders$.subscribe((res) => {
+      console.warn(res)
+      this.source = res;
+    })
+  }
+
+  rowSelected(po: PurchaseOrder[]) {
+    console.warn(po)
+    this.router.navigateByUrl(`/apps/purchase/purchase-orders/orders/${po[0].id}`)
+  }
 }
