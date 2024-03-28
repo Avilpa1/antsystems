@@ -12,7 +12,7 @@
                 <label for="inner_box"
                     class="mb-1 text-xs font-medium text-gray-900 dark:text-white w-1/3 flex items-center text">PO Number: &nbsp;</label>
                 <div class="ant-text">
-                    Test Value
+                    {{ purchaseOrder.poNumber | uppercase }}
                 </div>
             </div>
         </div>
@@ -116,14 +116,14 @@
     <div class="flex gap-x-16">
         <div class="w-2/3">
             <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Notes</label>
-            <textarea id="message" formControlName="notes" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="..."></textarea>
+            <textarea id="message" formControlName="note" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="..."></textarea>
         </div>
         <div class="w-1/3 mt-4">
-            <ant-text label="Sub-Total" value="Text Value"></ant-text>
-            <ant-text label="Freight" value="Text Value"></ant-text>
-            <ant-text label="Extra" value="Text Value"></ant-text>
-            <ant-text label="Discount" value="Text Value"></ant-text>
-            <ant-text label="Total Amount" value="Text Value"></ant-text>
+            <ant-text label="Sub-Total" value="{{purchaseOrder.subTotal | currency}}"></ant-text>
+            <ant-text label="Freight" value="{{purchaseOrder.freight | currency}}"></ant-text>
+            <ant-text label="Extra" value="{{purchaseOrder.extra | currency}}"></ant-text>
+            <ant-text label="Discount" value="{{purchaseOrder.discount | currency}}"></ant-text>
+            <ant-text label="Total Amount" value="{{purchaseOrder.total | currency}}"></ant-text>
         </div>
     </div>
     <button (click)="save()">Save</button>

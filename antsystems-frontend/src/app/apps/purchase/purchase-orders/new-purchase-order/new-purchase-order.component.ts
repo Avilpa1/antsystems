@@ -5,6 +5,7 @@ import { VendorRepository } from '../../+state/vendor.repository';
 import { CarrierRepository } from '../../+state/carrier.repository';
 import { ActivatedRoute } from '@angular/router';
 import { PurchaseOrdersRepository } from '../../+state/purchase-order.repository';
+import { PurchaseOrder } from '../../+models/purchase-order.models';
 
 @Component({
   selector: 'app-new-purchase-order',
@@ -16,7 +17,7 @@ export class NewPurchaseOrderComponent {
   statusOptions = [{name: 'New'}, {name: 'Pending'}, {name: 'Cancelled'}];
   vendors = [];
   shipTo = [];
-
+  purchaseOrder!: PurchaseOrder
   source: Array<any> = []
 
   columns: Array<GuiColumn> = [
@@ -95,8 +96,8 @@ export class NewPurchaseOrderComponent {
     const idFromRoute = this.route.snapshot.params['id'];  
     if (idFromRoute) {
       this.poRepo.purchaseOrders$.subscribe(() => {
-        const item = this.poRepo.getById(idFromRoute)!;
-        this.form.patchValue(item);
+        this.purchaseOrder = this.poRepo.getById(idFromRoute)!;
+        this.form.patchValue(this.purchaseOrder);
         // this.canEditItem = false;
         // this.productForm.disable();
       })
@@ -124,7 +125,7 @@ export class NewPurchaseOrderComponent {
         date: new FormControl(null),
         etaDate: new FormControl(null),
         refrence: new FormControl(null),
-        notes: new FormControl(null),
+        note: new FormControl(null),
       }
     )
   }
